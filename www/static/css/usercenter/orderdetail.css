@@ -1,0 +1,131 @@
+.right-con {
+    float: left;
+    width: 950px;
+}
+
+.right-con .panel {
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #fff;
+}
+
+.right-con .panel-title {
+    padding: 10px;
+    font-size: 14px;
+    border-bottom: 1px solid #eee;
+    color: #666;
+    font-weight: 700;
+}
+
+.right-con .panel-body {
+    padding: 10px 0;
+    overflow: hidden;
+}
+
+.right-con .order-info {
+    padding: 0 10px;
+}
+
+.right-con .order-info .text {
+    margin-right: 20px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0 20px;
+    height: 40px;
+    line-height: 40px;
+    vertical-align: middle;
+    border: none;
+    background-color: #c60023;
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-mini {
+    height: 25px;
+    line-height: 25px;
+    font-size: 12px;
+    padding: 2px 10px;
+    margin-right: 10px;
+}
+
+.right-con .order-list-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fafafa;
+}
+
+.right-con .order-list-table.header {
+    background: #eee;
+}
+
+.right-con .order-list-cell {
+    color: #666;
+    border-bottom: 1px solid #eee;
+}
+
+.right-con .order-list-table .cell-img {
+    width: 10%;
+    padding: 10px;
+}
+
+.right-con .order-list-table .cell-info {
+    width: 45%;
+    padding: 0 10px;
+    text-align: left;
+}
+
+.right-con .order-list-table .cell-count, .right-con .order-list-table .cell-price, .right-con .order-list-table .cell-total {
+    width: 15%;
+    text-align: center;
+}
+
+.right-con .order-list-table .cell-count, .right-con .order-list-table .cell-price, .right-con .order-list-table .cell-total {
+    width: 15%;
+    text-align: center;
+}
+
+.right-con .order-list-table .cell-count, .right-con .order-list-table .cell-price, .right-con .order-list-table .cell-total {
+    width: 15%;
+    text-align: center;
+}
+
+.right-con .order-list-table .cell-img .p-img {
+    width: 80px;
+    height: 80px;
+    border: 1px solid #ddd;
+}
+
+.right-con .order-list-table .cell-info .p-name {
+    line-height: 18px;
+}
+
+.link {
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.right-con .total {
+    font-size: 14px;
+    line-height: 40px;
+    height: 40px;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+.pull-right {
+    float: right;
+}
+
+.enhance {
+    font-weight: 700;
+    color: #c60023;
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="icon" href="/static/img/mall.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/common.css">
+    <link rel="stylesheet" href="/static/css/navtop.css">
+    <link rel="stylesheet" href="/static/css/header.css">
+    <link rel="stylesheet" href="/static/css/footer.css">
+    {% block style %}{% endblock %}
+</head>
+<body>
+    <div class="site-nav">
+        <div class="nav">
+            <nav class="m-div navbar container" role="navigation">
+                <div class="row">
+                    <div class="col-xs-3 col-sm-3">
+                        <ul class="nav navbar-nav">
+                            <!-- <li v-if="isLogin">
+                                <a>欢迎您，{{userName}}</a>
+                            </li> -->
+                            <li>
+                                <a href="">登录</a>
+                            </li>
+                            <li>
+                                <a>|</a>
+                            </li>
+                            <!-- <li v-if="isLogin">
+                                <a href="">退出</a>
+                            </li> -->
+                            <li>
+                                <a href="">注册</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-sm-offset-5 col-xs-offset-5">
+                        <ul class="nav navbar-nav" id="nav-list">
+                            <li>
+                                <a href="">个人中心</a>
+                            </li>
+                            <li>
+                                <a href="">我的购物车</a>
+                            </li>
+                            <li>
+                                <a href="">我的订单</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="site-header">
+        <div class="m-div container">
+            <!-- 广告背景图 -->
+            <div class="row">
+                <figure class="col-sm-12">
+                    <a href="https://www.kaola.com/" target="_blank">
+                    <img src="/static/img/header/header.png" width="100%" alt="">
+                    </a>
+                </figure>
+            </div>
+            <!-- 商品搜索栏 -->
+            <div class="row search-con">
+                <!-- 网站logo -->
+                <div class="col-xs-1 col-sm-1 col-sm-offset-1 col-xs-offset-1">
+                    <a class="logo">HUSTMall</a>
+                </div>
+                <!-- 搜索框 -->
+                <div class="col-xs-8 col-sm-8 col-sm-offset-1 col-xs-offset-1 search">
+                    <input class="search-input" type="text" placeholder="请输入商品名称">
+                    <button class="search-btn">搜索</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% block content %}{% endblock %}
+
+    <footer>
+        <div class="m-div">
+            <p class="copyright"> Copyright @ 2017 HUSTMall All Rights Reserved </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% block script %}{% endblock %}
+</body>
+</html>

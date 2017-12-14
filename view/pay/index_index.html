@@ -1,0 +1,17 @@
+{% extends '../home/parent.html' %}
+{% block title %}订单支付{% endblock %}
+{% block style %}
+<link rel="stylesheet" href="/static/css/crumb.css">
+<link rel="stylesheet" href="/static/css/paywrap.css">
+{% endblock %}
+
+{% block content %}
+{% include '../goods/crumb.html' %}
+<div class="pay-wrap">
+  <div class="m-div">
+      <p class="pay-tips">订单提交成功，请您尽快支付！ 订单号：1513047919319</p>
+      <p class="pay-tips enhance">请使用支付宝扫描如下二维码进行支付：</p>
+      <div class="img-con"> <img class="qr-code" src="http://img.happymmall.com/qr-1513047919319.png"> </div>
+  </div>
+</div>
+{% endblock %}

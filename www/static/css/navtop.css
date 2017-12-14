@@ -1,0 +1,11 @@
+.site-nav {
+    width: 100%;
+  }
+  .m-div {
+    width: 1080px;
+    margin: 0 auto;
+  }
+  
+  #nav-list {
+    float: right;
+  }

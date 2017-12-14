@@ -1,0 +1,25 @@
+.left-con {
+    float: left;
+    width: 130px;
+    min-height: 100px;
+}
+
+.menu-item {
+    font-size: 13px;
+    color: #666;
+}
+
+.link {
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.menu-item .link {
+    color: #777;
+    line-height: 25px;
+}
+
+.menu-item.active .link {
+    color: #c60023;
+}

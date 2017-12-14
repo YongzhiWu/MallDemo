@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    min-width: 1080px;
+}
+
+a:focus{
+    outline: none;
+    outline-offset: 0;
+}
+
+.container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.row {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+input[type=checkbox], label {
+    cursor: pointer;
+}
+
+.clear:after {
+    display: block;
+    content: ".";
+    width: 0;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.link {
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover{
+    text-decoration: none;
+}

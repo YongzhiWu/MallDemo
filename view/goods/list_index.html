@@ -1,0 +1,41 @@
+{% extends '../home/parent.html' %}
+{% block title %}商品列表{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="/static/css/crumb.css">
+<link rel="stylesheet" href="/static/css/listwrap.css">
+{% endblock %}
+
+{% block content %}
+{% include './crumb.html' %}
+<div class="site-list">
+    <div class="m-div">
+        <ul class="sorter-con">
+            <li class="sorter-item active" data-type="default">
+                <span>推荐排序</span>
+            </li>
+            <li class="sorter-item" data-type="price">
+                <span>价格</span>
+                <span class="glyphicon glyphicon-sort"></span>
+            </li>
+        </ul>
+        <ul class="goods-list-con">
+            <li class="goods-item">
+                <div class="goods-img-con">
+                    <a href="" class="goods-link" target="_blank">
+                        <img class="goods-img" src="../assets/goods/tv.jpg" alt="【测试学习使用】Hisense/海信 LED55EC720US 55吋4K高清智能网络平板液晶电视机">
+                    </a>
+                </div>
+                <div class="goods-price-con">
+                    <span class="goods-price">￥4199</span>
+                </div>
+                <div class="goods-name-con">
+                    <a href="" class="goods-name" target="_blank" title="【测试学习使用】Hisense/海信 LED55EC720US 55吋4K高清智能网络平板液晶电视机">
+                        【测试学习使用】Hisense/海信 LED55EC720US 55吋4K高清智能网络平板液晶电视机
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

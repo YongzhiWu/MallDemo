@@ -1,0 +1,77 @@
+.site-floor {
+    width: 100%;
+  }
+  .m-div {
+    width: 1080px;
+    margin: 0 auto;
+  }
+  .floor-wrap {
+    overflow: hidden;
+  }
+  
+  .floor-wrap .floor-title {
+    height: 50px;
+    line-height: 50px;
+    color: #d58717;
+    font-weight: 400;
+    font-size: 20px;
+    border-bottom: 1px solid #d58717;
+  }
+  
+  .floor-wrap .floor-list {
+    margin-right: -20px;
+  }
+  
+  .floor-wrap .floor-item {
+    position: relative;
+    width: 200px;
+    height: 220px;
+    margin: 15px 20px 15px 0;
+    float: left;
+    cursor: pointer;
+    background: #fff;
+    transition: box-shadow 0.5s ease;
+  }
+  
+  .floor-wrap .floor-item .floor-text {
+    position: absolute;
+    top: 12px;
+    left: 20px;
+    font-size: 16px;
+    color: #5e5e5e;
+  }
+  
+  .floor-wrap .floor-item .floor-img {
+    position: absolute;
+    right: 15px;
+    bottom: 10px;
+    width: 80%;
+    height: 75%;
+    border: none;
+  }
+  
+  .floor-wrap:nth-child(2) .floor-title {
+    color: #3b838c;
+    border-bottom: 1px solid #3b838c;
+  }
+  
+  .floor-wrap:nth-child(3) .floor-title {
+    color: #a93931;
+    border-bottom: 1px solid #a93931;
+  }
+  
+  .floor-wrap:nth-child(4) .floor-title {
+    color: #488bad;
+    border-bottom: 1px solid #488bad;
+  }
+  
+  .floor-wrap:nth-child(5) .floor-title {
+    color: #642663;
+    border-bottom: 1px solid #642663;
+  }
+  
+  footer .copyright {
+    margin: 10px 0;
+    text-align: center;
+    color: #666;
+  }

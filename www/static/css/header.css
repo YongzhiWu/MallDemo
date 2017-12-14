@@ -1,0 +1,48 @@
+.site-header {
+    width: 100%;
+  }
+  .m-div {
+    width: 1080px;
+    margin: 0 auto;
+  }
+  .logo {
+    width: 150px;
+    font-size: 36px;
+    font-weight: 700;
+    color: #c60023;
+    text-decoration: none;
+    text-align: center;
+  }
+  
+  .logo:hover {
+    text-decoration: none;
+    color: #c60023;
+  }
+  
+  .site-header .search-con{
+      padding: 40px 0 30px 0;
+  }
+  
+  .search {
+    font-size: 24px;
+  }
+  
+  .search-input {
+    width: 550px;
+    padding: 10px;
+    border: 2px solid #c60023;
+    font-size: 15px;
+    outline: none;
+  }
+  
+  .search-btn {
+    width: 80px;
+    height: 42px;
+    border: none;
+    background-color: #c60023;
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+  }

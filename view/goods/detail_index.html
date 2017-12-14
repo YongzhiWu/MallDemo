@@ -1,0 +1,69 @@
+{% extends '../home/parent.html' %}
+{% block title %}商品详情{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="/static/css/crumb.css">
+<link rel="stylesheet" href="/static/css/detailcon.css">
+{% endblock %}
+
+{% block content %}
+{% include './crumb.html' %}
+<div class="site-detail">
+    <div class="m-div">
+      <div class="intro-wrap clear">
+        <div class="intro-img-wrap">
+          <div class="main-img-con">
+            <img src="../assets/detail/Hisense-1.jpg" alt="" class="main-img">
+          </div>
+          <ul class="intro-img-list">
+            <li class="img-list-item">
+              <img src="../assets/detail/Hisense-1.jpg" alt="" class="item-img">
+            </li>
+            <li class="img-list-item">
+              <img src="../assets/detail/Hisense-2.jpg" alt="" class="item-img">
+            </li>
+            <li class="img-list-item">
+              <img src="../assets/detail/Hisense-3.jpg" alt="" class="item-img">
+            </li>
+            <li class="img-list-item">
+              <img src="../assets/detail/Hisense-4.jpg" alt="" class="item-img">
+            </li>
+          </ul>
+        </div>
+        <div class="intro-info-wrap">
+          <p class="p-name">【测试学习使用】Hisense/海信 LED55EC720US 55吋4K高清智能网络平板液晶电视机</p>
+          <p class="p-subtitle">55寸4K高清</p>
+          <div class="info-item p-price-con">
+            <span class="label">价格：</span>
+            <span class="p-price">￥4199</span>
+          </div>
+          <div class="info-item p-quantity-con">
+            <span class="label">库存：</span>
+            <span class="p-num">51</span>
+          </div>
+          <div class="info-item">
+            <span class="label">数量：</span>
+            <input type="text" class="p-count" value="1" readonly="readonly">
+            <span class="p-count-btn plus" data-opera-type="plus">+</span>
+            <span class="p-count-btn minus" data-opera-type="minus">-</span>
+          </div>
+          <div class="info-item">
+            <a href="" class="btn cart-add">加入购物车</a>
+          </div>
+        </div>
+      </div>
+      <div class="detail-wrap">
+        <div class="detail-tab-con">
+          <ul class="tab-list">
+            <li class="tab-item active">商品详情</li>
+          </ul>
+        </div>
+        <div class="detail-con">
+          <p>
+            <img src="../assets/detail/Hisense-detail.png" alt="">
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

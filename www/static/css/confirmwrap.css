@@ -1,0 +1,145 @@
+.confirm-wrap {
+    width: 100%;
+  }
+  
+  .m-div {
+    width: 1080px;
+    margin: 0 auto;
+  }
+  
+  .confirm-wrap .panel {
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  
+  .confirm-wrap .panel .panel-title {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 35px;
+    height: 35px;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .confirm-wrap .panel .address-item {
+    margin: 20px 20px 0 0;
+    width: 200px;
+    float: left;
+    padding: 5px 8px 2px;
+    border: 3px dashed #ccc;
+    cursor: pointer;
+  }
+  
+  .confirm-wrap .panel .address-item:hover {
+    background: #eee;
+  }
+  
+  .confirm-wrap .panel .address-item .address-title {
+    font-size: 12px;
+    color: #666;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .confirm-wrap .panel .address-item .address-detail {
+    margin-top: 5px;
+    height: 36px;
+    overflow: hidden;
+    color: #666;
+  }
+  
+  .confirm-wrap .panel .address-item .address-opera {
+    text-align: right;
+    visibility: hidden;
+  }
+  
+  .confirm-wrap .panel .address-item.avtive .address-opera,
+  .confirm-wrap .panel .address-item:hover .address-opera {
+    visibility: visible;
+  }
+  
+  .link {
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .link:hover {
+    color: #e80012;
+  }
+  
+  .confirm-wrap .panel .address-item .address-new {
+    padding: 6px;
+    text-align: center;
+    color: #ccc;
+  }
+  
+  .confirm-wrap .panel .address-item .address-new .text {
+    font-size: 13px;
+  }
+  
+  .confirm-wrap .product-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+  }
+  
+  .confirm-wrap .product-table th {
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px dotted #ddd;
+  }
+  
+  .confirm-wrap .product-table td {
+    border-bottom: 1px dotted #ddd;
+  }
+  
+  .confirm-wrap .product-table .cell-img {
+    width: 80px;
+    padding: 10px;
+  }
+  
+  .confirm-wrap .product-table .cell-img .p-img {
+    width: 80px;
+    height: 80px;
+    border: 1px solid #ddd;
+  }
+  
+  .confirm-wrap .submit-con {
+    text-align: right;
+    background: #eee;
+  }
+  
+  .confirm-wrap .submit-con .submit-total {
+    font-size: 18px;
+    color: #c60023;
+    font-weight: 700;
+    margin-right: 30px;
+    vertical-align: middle;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 0 20px;
+    height: 40px;
+    line-height: 40px;
+    vertical-align: middle;
+    border: none;
+    background-color: #c60023;
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .confirm-wrap .panel .address-item .address-new .glyphicon-plus {
+      font-size: 50px;
+      line-height: 50px;
+  }
+  
+  .confirm-wrap .panel-body{
+      padding: 0;
+  }

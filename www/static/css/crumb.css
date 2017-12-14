@@ -1,0 +1,18 @@
+.crumb {
+    margin-bottom: 15px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+    background: #eee;
+    color: #888;
+    border-top: 2px solid #c60023;
+  }
+  .m-div {
+    width: 1080px;
+    margin: 0 auto;
+  }
+  .crumb .crumb-item {
+    color: #888;
+    text-decoration: none;
+    cursor: pointer;
+  }
