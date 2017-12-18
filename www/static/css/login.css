@@ -1,0 +1,266 @@
+.header-simple {
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    border-bottom: 1px solid#ddd;
+    background: #fff;
+}
+
+meta {
+    display: none;
+}
+
+script {
+    display: none;
+}
+
+div {
+    display: block;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.w {
+    width: 1080px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: auto;
+    text-decoration: underline;
+}
+
+.header-simple .logo {
+    margin-right: 20px;
+    font-size: 26px;
+    font-weight: 700;
+    color: #c60023;
+    text-decoration: none;
+}
+
+.user-wrap {
+    padding: 40px 0;
+    background: #e72955
+}
+
+.user-con {
+    position: relative;
+    width: 400px;
+    margin: 0 auto;
+    background: #fff;
+}
+
+.user-con .user-title {
+    text-align: center;
+    border-bottom: 1px solid rgb(221, 221, 221);
+    padding: 10px 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #666;
+}
+
+.user-con .user-box {
+    padding: 20px;
+}
+
+.user-con .err-item {
+    position: relative;
+    padding: 4px 0 4px 40px;
+    margin-bottom: 10px;
+    border: 1px solid red;
+    background: #fde9e9;
+    color: red;
+    display: none;
+}
+
+.user-con .err-item {
+    position: relative;
+    padding: 4px 0 4px 40px;
+    margin-bottom: 10px;
+    border: 1px solid red;
+    background: #fde9e9;
+    color: red;
+}
+
+.user-con .err-item .err-icon {
+    position: absolute;
+    font-size: 14px;
+    left: 14px;
+    top: 50%;
+    margin-top: -7px;
+}
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+.user-con .err-item .err-icon {
+    position: absolute;
+    font-size: 14px;
+    left: 14px;
+    top: 50%;
+    margin-top: -7px;
+}
+
+.fa-minus-circle:before {
+    content: "\F056";
+}
+
+p {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+
+.user-con .user-item {
+    position: relative;
+    border: 1px solid #bdbdbd;
+    margin-bottom: 20px;
+}
+
+.user-con .user-item .user-label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    line-height: 36px;
+    background: #f3f3f3;
+    font-size: 18px;
+    color: #d3d3d3;
+    text-align: center;
+    border-right: 1px solid #bdbdbd;
+}
+
+.user-con .user-item .user-content {
+    padding: 10px 0 10px 50px;
+    width: 308px;
+    height: 18px;
+    line-height: 18px;
+    font-size: 15px;
+    color: #333;
+    border: none;
+    outline: none;
+    box-sizing: content-box;
+}
+
+input:not([type]),
+input[type="email" i],
+input[type="number" i],
+input[type="password" i],
+input[type="tel" i],
+input[type="url" i],
+input[type="text" i] {
+    padding: 1px 0px;
+}
+
+input {
+    -webkit-appearance: textfield;
+    background-color: white;
+    -webkit-rtl-ordering: logical;
+    cursor: auto;
+    padding: 1px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: initial;
+    border-image: initial;
+}
+
+input,
+textarea,
+select,
+button {
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+}
+
+input,
+textarea,
+select,
+button,
+meter,
+progress {
+    -webkit-writing-mode: horizontal-tb;
+}
+
+.user-con .user-btn {
+    display: block;
+    padding: 6px 0;
+    width: 100%;
+    text-align: center;
+    background: #e4393c;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.user-con .link-item {
+    margin: 15px auto 0;
+    text-align: right;
+    color: #666;
+}
+
+.user-con .link {
+    padding: 0 5px;
+    color: #666;
+    text-decoration: none;
+}
+
+.link {
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.footer {
+    width: 100%;
+}
+
+.footer .links {
+    margin: 15px 0;
+    text-align: center;
+    color: #666;
+}
+
+.footer .links .link {
+    padding: 10px;
+    text-decoration: none;
+    color: #666;
+}
+
+.link {
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.footer .copyright {
+    margin: 10px 0;
+    text-align: center;
+    color: #666;
+}

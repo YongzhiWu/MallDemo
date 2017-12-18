@@ -1,0 +1,62 @@
+{% extends './admin.html' %} {% block title %}商品管理{% endblock %} {% block style %}
+<style>
+    .panel-body .search-mode {
+        height: 34px;
+        border: 1px solid #ccc;
+        display: inline-block;
+    }
+</style>
+{% endblock %} {% block content %}
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">商品管理</h3>
+    </div>
+    <div class="panel-body">
+        <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="关键词">
+            </div>
+            <button type="submit" class="btn btn-default">查询</button>
+            <div class="form-group">
+                <select class="search-mode">
+                    <option value="name">按商品名称查询</option>
+                    <option value="id">按商品id查询</option>
+                </select>
+            </div>
+        </form>
+        <button type="button" class="btn btn-primary navbar-btn" onclick="addProduct()">
+            <span class="glyphicon glyphicon-plus"></span>
+            添加商品
+        </button>
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>商品信息</th>
+                    <th>价格</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>iPhone X</td>
+                    <td>牛x手机</td>
+                    <td>9999元</td>
+                    <td>在售</td>
+                    <td>查看编辑</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+{% block script %}
+<script>
+    function addProduct(){
+        window.location.href = '/admin/product/add';
+    }
+</script>
+{% endblock %}

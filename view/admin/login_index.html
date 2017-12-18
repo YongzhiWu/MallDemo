@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>后台登录</title>
+    <link rel="icon" href="/static/img/mall.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/common.css">
+    <style>
+        form .heading {
+            font-size: 24px;
+            color: #00b4ef;
+        }
+
+        .login-box {
+            border: 1px solid #00b4ef;
+            border-radius: 10px;
+            width: 500px;
+            padding: 20px 50px;
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        .form-group .btn {
+            background-color: #00b4ef;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-box">
+        <form class="form-horizontal" method="post">
+            <p class="heading text-center">后台登录</p>
+            <div class="form-group">
+                <input type="user" name="username" class="form-control" id="user" placeholder="用户名">
+                <i class="fa fa-user"></i>
+            </div>
+            <div class="form-group help">
+                <input type="password" name="password" class="form-control" id="password" placeholder="密　码">
+                <i class="fa fa-lock"></i>
+                <a href="#" class="fa fa-question-circle"></a>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-lg btn-block">登录</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,13 +1,13 @@
 'use strict';
 
-import Base from '../../cart/controller/base.js';
+import Base from './base.js';
 
 export default class extends Base {
   /**
    * index action
    * @return {Promise} []
    */
-  async indexAction(){
+  indexAction(){
     //auto render template file index_index.html
     return this.display();
   }

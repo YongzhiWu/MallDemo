@@ -1,0 +1,44 @@
+{% extends './admin.html' %} {% block title %}添加品类{% endblock %} {% block style %}
+<style>
+    .panel-body .search-mode {
+        height: 34px;
+        border: 1px solid #ccc;
+        display: inline-block;
+    }
+</style>
+{% endblock %} {% block content %}
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">添加品类</h3>
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal" role="form" method="post">
+            <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">品类名称</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="name" placeholder="请输入品类名称">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="child-name" class="col-sm-2 control-label">子品类</label>
+                <button type="button" class="btn btn-primary" onclick="addChildClass(this)"><span class="glyphicon glyphicon-plus" ></span>添加子品类</button>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary">提交</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+{% block script %}
+<script>
+    function addChildClass(el){
+        var newEl = document.createElement('div');
+        $(newEl).addClass('col-sm-2');
+        newEl.innerHTML = '<input type="text" class="form-control" id="child-name" placeholder="请输入子品类名称">';
+        el.before(newEl);
+    }
+</script>
+{% endblock %}

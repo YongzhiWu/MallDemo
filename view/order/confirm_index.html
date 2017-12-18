@@ -59,10 +59,18 @@
                 <div class="submit-con">
                     <span>订单总价：</span>
                     <span class="submit-total">￥1599</span>
-                    <span class="btn order-submit">提交订单</span>
+                    <span class="btn order-submit" onclick="gotopay()">提交订单</span>
                 </div>
             </div>
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block script %}
+<script>
+    function gotopay(){
+        window.location.href = '../pay';
+    }
+</script>
 {% endblock %}

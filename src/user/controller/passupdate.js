@@ -1,6 +1,6 @@
 'use strict';
 
-import Base from './base.js';
+import Base from '../../cart/controller/base.js';
 
 export default class extends Base {
   /**

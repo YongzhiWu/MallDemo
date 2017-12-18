@@ -9,9 +9,22 @@ export default class extends Base {
    */
   indexAction(){
     //auto render template file index_index.html
-    //查询用户地址、订单中的商品详情
+    return this.display();
+  }
 
-    //将数据传给前端
+  cateAction(){
+    return this.display();
+  }
+
+  showAction(){
+    return this.display();
+  }
+
+  addAction(){
+    return this.display();
+  }
+
+  newAction(){
     return this.display();
   }
 }

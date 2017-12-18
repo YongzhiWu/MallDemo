@@ -1,0 +1,54 @@
+{% extends './admin.html' %} 
+{% block title %}订单管理{% endblock %} 
+{% block style %}
+<style>
+    .panel-body .search-mode {
+        height: 34px;
+        border: 1px solid #ccc;
+        display: inline-block;
+    }
+</style>
+{% endblock %} {% block content %}
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">订单管理</h3>
+    </div>
+    <div class="panel-body">
+        <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="订单号">
+            </div>
+            <button type="submit" class="btn btn-default">查询</button>
+            <div class="form-group">
+                <select class="search-mode">
+                    <option value="orderNum">按订单号查询</option>
+                </select>
+            </div>
+        </form>
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>订单号</th>
+                    <th>收件人</th>
+                    <th>订单状态</th>
+                    <th>订单总价</th>
+                    <th>创建时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1555555555555</td>
+                    <td>huster</td>
+                    <td>未付款</td>
+                    <td>9999元</td>
+                    <td>2017-12-18</td>
+                    <td>查看</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

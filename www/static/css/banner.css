@@ -43,7 +43,7 @@
   text-decoration: none;
 }
 
-.carousel-inner > .item > img {
+.carousel-inner > .item > a>  img {
   height: 370px;
   width: 100%;
 }

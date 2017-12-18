@@ -1,11 +1,6 @@
-{% extends "./parent.html" %}
-{% block title %}HUSTMall{% endblock%}
-{% block style %}
+{% extends "./parent.html" %} {% block title %}HUSTMall{% endblock%} {% block style %}
 <link rel="stylesheet" href="/static/css/banner.css">
-<link rel="stylesheet" href="/static/css/floor.css">
-{% endblock %}
-
-{% block content %}
+<link rel="stylesheet" href="/static/css/floor.css"> {% endblock %} {% block content %}
 <div class="site-show">
     <div class="m-div">
         <div class="container">
@@ -14,8 +9,8 @@
                 <div class="col-xs-9 3col-sm-3 cate-wrap">
                     <ul class="cate-list">
                         <li class="cate-item">
-                            <a href="" class="cate-link" target="_blank">手机</a>
-                            <a href="" class="cate-link" target="_blank">数码</a>
+                            <a href="../goods/list/index" class="cate-link" target="_blank">手机</a>
+                            <a href="../goods/list/index" class="cate-link" target="_blank">数码</a>
                         </li>
                         <li class="cate-item">
                             <a href="" class="cate-link" target="_blank">电脑</a>
@@ -76,13 +71,19 @@
                         <!-- 轮播（Carousel）项目 -->
                         <div class="carousel-inner">
                             <div class="item active">
-                                <img src="/static/img/banner/banner-bg.jpg" alt="First slide">
+                                <a href="../goods/detail" target="_blank">
+                                    <img src="/static/img/banner/banner-bg.jpg" alt="First slide">
+                                </a>
                             </div>
                             <div class="item">
-                                <img src="/static/img/banner/banner-jg.jpg" alt="Second slide">
+                                <a href="../goods/detail" target="_blank">
+                                    <img src="/static/img/banner/banner-jg.jpg" alt="Second slide">
+                                </a>
                             </div>
                             <div class="item">
-                                <img src="/static/img/banner/banner-qx.jpg" alt="Third slide">
+                                <a href="../goods/detail" target="_blank">
+                                    <img src="/static/img/banner/banner-qx.jpg" alt="Third slide">
+                                </a>
                             </div>
                         </div>
                         <!-- 轮播（Carousel）导航 -->
@@ -121,13 +122,13 @@
                 <li class="floor-item">
                     <a href="">
                         <span class="floor-text">空调</span>
-                        <img src="../assets/floor/floor1-4.jpg" alt="" class="floor-img">
+                        <img src="/static/img/floor/floor1-4.jpg" alt="" class="floor-img">
                     </a>
                 </li>
                 <li class="floor-item">
                     <a href="">
                         <span class="floor-text">电热水器</span>
-                        <img src="../assets/floor/floor1-5.jpg" alt="" class="floor-img">
+                        <img src="/static/img/floor/floor1-5.jpg" alt="" class="floor-img">
                     </a>
                 </li>
             </ul>
@@ -138,31 +139,31 @@
                 <li class="floor-item">
                     <a href="">
                         <span class="floor-text">笔记本</span>
-                        <img src="../assets/floor/floor2-1.jpg" alt="" class="floor-img">
+                        <img src="/static/img/floor/floor2-1.jpg" alt="" class="floor-img">
                     </a>
                 </li>
                 <li class="floor-item">
                     <a href="">
                         <span class="floor-text">手机</span>
-                        <img src="../assets/floor/floor2-2.jpg" alt="" class="floor-img">
+                        <img src="/static/img/floor/floor2-2.jpg" alt="" class="floor-img">
                     </a>
                 </li>
                 <li class="floor-item">
                     <a href="">
                         <span class="floor-text">平板电脑</span>
-                        <img src="../assets/floor/floor2-3.jpg" alt="" class="floor-img">
+                        <img src="/static/img/floor/floor2-3.jpg" alt="" class="floor-img">
                     </a>
                 </li>
                 <li class="floor-item">
                     <a href="">
                         <span class="floor-text">数码相机</span>
-                        <img src="../assets/floor/floor2-4.jpg" alt="" class="floor-img">
+                        <img src="/static/img/floor/floor2-4.jpg" alt="" class="floor-img">
                     </a>
                 </li>
                 <li class="floor-item">
                     <a href="">
                         <span class="floor-text">相关配件</span>
-                        <img src="../assets/floor/floor2-5.jpg" alt="" class="floor-img">
+                        <img src="/static/img/floor/floor2-5.jpg" alt="" class="floor-img">
                     </a>
                 </li>
             </ul>
@@ -173,31 +174,31 @@
                 <li class="floor-item">
                     <a href="">
                         <span class="floor-text">女装</span>
-                        <img src="../assets/floor/floor3-1.jpg" alt="" class="floor-img">
+                        <img src="/static/img/floor/floor3-1.jpg" alt="" class="floor-img">
                     </a>
                 </li>
                 <li class="floor-item">
                     <a href="">
                         <span class="floor-text">帽子专区</span>
-                        <img src="../assets/floor/floor3-2.jpg" alt="" class="floor-img">
+                        <img src="/static/img/floor/floor3-2.jpg" alt="" class="floor-img">
                     </a>
                 </li>
                 <li class="floor-item">
                     <a href="">
                         <span class="floor-text">旅行箱</span>
-                        <img src="../assets/floor/floor3-3.jpg" alt="" class="floor-img">
+                        <img src="/static/img/floor/floor3-3.jpg" alt="" class="floor-img">
                     </a>
                 </li>
                 <li class="floor-item">
                     <a href="">
                         <span class="floor-text">手提包</span>
-                        <img src="../assets/floor/floor3-4.jpg" alt="" class="floor-img">
+                        <img src="/static/img/floor/floor3-4.jpg" alt="" class="floor-img">
                     </a>
                 </li>
                 <li class="floor-item">
                     <a href="">
                         <span class="floor-text">保暖内衣</span>
-                        <img src="../assets/floor/floor3-5.jpg" alt="" class="floor-img">
+                        <img src="/static/img/floor/floor3-5.jpg" alt="" class="floor-img">
                     </a>
                 </li>
             </ul>
@@ -208,31 +209,31 @@
                 <li class="floor-item">
                     <a href="">
                         <span class="floor-text">最爱零食</span>
-                        <img src="../assets/floor/floor4-1.jpg" alt="" class="floor-img">
+                        <img src="/static/img/floor/floor4-1.jpg" alt="" class="floor-img">
                     </a>
                 </li>
                 <li class="floor-item">
                     <a href="">
                         <span class="floor-text">生鲜</span>
-                        <img src="../assets/floor/floor4-2.jpg" alt="" class="floor-img">
+                        <img src="/static/img/floor/floor4-2.jpg" alt="" class="floor-img">
                     </a>
                 </li>
                 <li class="floor-item">
                     <a href="">
                         <span class="floor-text">半成品菜</span>
-                        <img src="../assets/floor/floor4-3.jpg" alt="" class="floor-img">
+                        <img src="/static/img/floor/floor4-3.jpg" alt="" class="floor-img">
                     </a>
                 </li>
                 <li class="floor-item">
                     <a href="">
                         <span class="floor-text">速冻专区</span>
-                        <img src="../assets/floor/floor4-4.jpg" alt="" class="floor-img">
+                        <img src="/static/img/floor/floor4-4.jpg" alt="" class="floor-img">
                     </a>
                 </li>
                 <li class="floor-item">
                     <a href="">
                         <span class="floor-text">进口食品</span>
-                        <img src="../assets/floor/floor4-5.jpg" alt="" class="floor-img">
+                        <img src="/static/img/floor/floor4-5.jpg" alt="" class="floor-img">
                     </a>
                 </li>
             </ul>
@@ -243,31 +244,31 @@
                 <li class="floor-item">
                     <a href="">
                         <span class="floor-text">白酒</span>
-                        <img src="../assets/floor/floor5-1.jpg" alt="" class="floor-img">
+                        <img src="/static/img/floor/floor5-1.jpg" alt="" class="floor-img">
                     </a>
                 </li>
                 <li class="floor-item">
                     <a href="">
                         <span class="floor-text">红酒</span>
-                        <img src="../assets/floor/floor5-2.jpg" alt="" class="floor-img">
+                        <img src="/static/img/floor/floor5-2.jpg" alt="" class="floor-img">
                     </a>
                 </li>
                 <li class="floor-item">
                     <a href="">
                         <span class="floor-text">饮料</span>
-                        <img src="../assets/floor/floor5-3.jpg" alt="" class="floor-img">
+                        <img src="/static/img/floor/floor5-3.jpg" alt="" class="floor-img">
                     </a>
                 </li>
                 <li class="floor-item">
                     <a href="">
                         <span class="floor-text">调制鸡尾酒</span>
-                        <img src="../assets/floor/floor5-4.jpg" alt="" class="floor-img">
+                        <img src="/static/img/floor/floor5-4.jpg" alt="" class="floor-img">
                     </a>
                 </li>
                 <li class="floor-item">
                     <a href="">
                         <span class="floor-text">进口洋酒</span>
-                        <img src="../assets/floor/floor5-5.jpg" alt="" class="floor-img">
+                        <img src="/static/img/floor/floor5-5.jpg" alt="" class="floor-img">
                     </a>
                 </li>
             </ul>

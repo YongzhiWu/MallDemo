@@ -1,0 +1,35 @@
+{% extends '../home/parent.html' %} {% block title %}用户登录{% endblock%} {% block style %}
+<link rel="stylesheet" href="/static/css/login.css"> {% endblock %} {% block header %}
+<div class="header-simple">
+    <div class="w">
+        <a href="../home" class="logo">HUSTMall</a>
+    </div>
+</div>
+{% endblock %} {% block content %}
+<div class="user-wrap">
+    <div class="user-con w">
+        <div class="user-title">用户登录</div>
+        <div class="user-box">
+            <form action="" method="post">
+                <div class="user-item">
+                    <label class="user-label" for="username">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </label>
+                    <input name="username" type="text" class="user-content" id="username" placeholder="请输入用户名" autocomplete="off" />
+                </div>
+                <div class="user-item">
+                    <label class="user-label" for="password">
+                        <span class="glyphicon glyphicon-lock"></span>
+                    </label>
+                    <input name="password" type="password" class="user-content" id="password" placeholder="请输入密码" />
+                </div>
+                <button class="user-btn" id="submit">登录</button>
+            </form>
+            <div class="link-item">
+                <a class="link pass-forget" href="" target="_blank">忘记密码</a>
+                <a class="link register" href="/user/signup" target="_blank">免费注册</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} {% block script %} {% endblock %}

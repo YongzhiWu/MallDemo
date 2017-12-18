@@ -88,9 +88,17 @@
           <div class="submit-con">
               <span>总价：</span>
               <span class="submit-total">￥4299</span>
-              <span class="btn submit-btn">去结算</span>
+              <span class="btn submit-btn" onclick="confirm()">去结算</span>
           </div>
       </div>
   </div>
 </div>
+{% endblock %}
+
+{% block script %}
+<script>
+    function confirm(){
+        window.location.href = '../order/confirm';
+    }
+</script>
 {% endblock %}
