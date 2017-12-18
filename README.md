@@ -1,5 +1,5 @@
 # HUSTMall
-HUSTMall是一个用ThinkJS 2.2（一个优秀的基于Node.js国产框架）做的电子商务网站，参考[官方文档](https://thinkjs.org/zh-cn/doc/2.2/index.html)
+HUSTMall是一个用ThinkJS 2.2（一个基于Node.js的优秀国产框架）做的电子商务网站，参考[官方文档](https://thinkjs.org/zh-cn/doc/2.2/index.html)
 
 ## 使用前
 由于相关依赖包都是通过npm添加，需要先安装[Node.js](https://nodejs.org/zh-cn/)
