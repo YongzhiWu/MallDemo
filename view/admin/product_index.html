@@ -12,15 +12,15 @@
         <h3 class="panel-title">商品管理</h3>
     </div>
     <div class="panel-body">
-        <form class="navbar-form navbar-left" role="search">
+        <form class="navbar-form navbar-left" role="search" method="POST">
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="关键词">
+                <input name="key" id="key" type="text" class="form-control" placeholder="关键词">
             </div>
-            <button type="submit" class="btn btn-default">查询</button>
+            <button class="btn btn-default">查询</button>
             <div class="form-group">
-                <select class="search-mode">
-                    <option value="name">按商品名称查询</option>
-                    <option value="id">按商品id查询</option>
+                <select name="select" class="search-mode">
+                    <option value="1">按商品名称查询</option>
+                    <option value="2">按商品id查询</option>
                 </select>
             </div>
         </form>
@@ -41,13 +41,18 @@
                 </tr>
             </thead>
             <tbody>
+                {% for item in items %}
                 <tr>
-                    <td>iPhone X</td>
-                    <td>牛x手机</td>
-                    <td>9999元</td>
+                    <td>{{ item.ProductId }}</td>
+                    <td>{{ item.ProductName }}</td>
+                    <td>￥{{ item.ProductPrice }}</td>
                     <td>在售</td>
-                    <td>查看编辑</td>
+                    <td>
+                        <a href="/admin/product/product_delete/productid/{{item.ProductId}}">删除商品</a>
+                        <a href="/admin/product/product_edit/productid/{{item.ProductId}}">查看编辑</a>
+                    </td>
                 </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
@@ -55,6 +60,22 @@
 {% endblock %}
 {% block script %}
 <script>
+    $(document).ready(function () {
+        $('.main-nav>li:nth-child(2)').addClass('active');
+    });
+    // function search(){
+    //     var selectValue = $('select.search-mode').value;
+    //     var keyword = $('#key').value;
+    //     $.ajax({
+    //         url: '/admin/product/index',
+    //         type: 'POST',
+    //         dateType: 'json',
+    //         data: {
+    //             select: selectValue,
+    //             key: keyword
+    //         }
+    //     });
+    // }
     function addProduct(){
         window.location.href = '/admin/product/add';
     }

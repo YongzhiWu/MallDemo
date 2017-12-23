@@ -1,43 +1,41 @@
-{% extends '../home/parent.html' %}
-{% block title %}用户中心{% endblock %}
-{% block style %}
+{% extends '../home/parent.html' %} {% block title %}用户中心{% endblock %} {% block style %}
 <link rel="stylesheet" href="/static/css/crumb.css">
 <link rel="stylesheet" href="/static/css/usercenter/usercenter.css">
 <link rel="stylesheet" href="/static/css/usercenter/usercenterleft.css">
-<link rel="stylesheet" href="/static/css/usercenter/userinfowrap.css">
-{% endblock %}
-
-{% block content %}
-{% include '../goods/crumb.html' %}
+<link rel="stylesheet" href="/static/css/usercenter/userinfowrap.css"> {% endblock %} {% block content %} {% include '../goods/crumb.html' %}
 <div class="user-center">
-  <div class="m-div">
-      {% include './usercenterleft.html' %}
-      <div class="right-con">
-        <div class="panel">
-            <div class="panel-title">
-                修改个人信息
-            </div>
-            <div class="panel-body">
-                <div class="user-info">
-                    <div class="text-line">
-                        <span class="text-label">用户名：</span>
-                        <span class="input">huster</span>
-                    </div>
-                    <div class="text-line">
-                        <span class="text-label">电 话：</span> <input type="text" class="input" id="phone" autocomplete="off" value="15011111037"> </div>
-                    <div class="text-line">
-                        <span class="text-label">邮 箱：</span> <input type="text" class="input" id="email" autocomplete="off" value="hust@qq.com"> </div>
-                    <div class="text-line">
-                        <span class="text-label">问 题：</span> <input type="text" class="input" id="question" autocomplete="off" value="question"> </div>
-                    <div class="text-line">
-                        <span class="text-label">答 案：</span> <input type="text" class="input" id="answer" autocomplete="off" value="answer"> </div>
-                    <div class="text-line">
-                        <span class="btn btn-mini btn-submit">提交修改</span>
-                    </div>
+    <div class="m-div">
+        {% include './usercenterleft.html' %}
+        <div class="right-con">
+            <div class="panel">
+                <div class="panel-title">
+                    修改个人信息
+                </div>
+                <div class="panel-body">
+                    <form class="user-info" method="post">
+                        <div class="text-line">
+                            <span class="text-label">用户名：</span>
+                            <span class="input">{{ userinfo.UserName }}</span>
+                        </div>
+                        <div class="text-line">
+                            <span class="text-label">电 话：</span>
+                            <input name="phone" type="text" class="input" id="phone" autocomplete="off" value="{{ userinfo.UserTel }}"> </div>
+                        <div class="text-line">
+                            <span class="text-label">邮 箱：</span>
+                            <input name="email" type="text" class="input" id="email" autocomplete="off" value="{{ userinfo.UserEmail }}"> </div>
+                        <div class="text-line">
+                            <span class="text-label">问 题：</span>
+                            <input name="question" type="text" class="input" id="question" autocomplete="off" value="{{ userinfo.UserQuestion }}"> </div>
+                        <div class="text-line">
+                            <span class="text-label">答 案：</span>
+                            <input name="answer" type="text" class="input" id="answer" autocomplete="off" value="{{ userinfo.Answer }}"> </div>
+                        <div class="text-line">
+                            <button class="btn btn-mini btn-submit">提交修改</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-  </div>
 </div>
 {% endblock %}

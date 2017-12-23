@@ -18,23 +18,23 @@
                 修改密码
             </div>
             <div class="panel-body">
-                <div class="pass-info">
+                <form class="pass-info" method="post">
                     <div class="text-line">
                         <span class="text">原始密码：</span>
-                        <input type="password" class="password" id="password" autocomplete="off">
+                        <input name="pass" type="password" class="password" id="password" autocomplete="off">
                     </div>
                     <div class="text-line">
                         <span class="text">新 密 码 ： </span>
-                        <input type="password" class="password" id="password-new" autocomplete="off">
+                        <input name="newpass" type="password" class="password" id="password-new" autocomplete="off">
                     </div>
                     <div class="text-line">
                         <span class="text">确认密码：</span>
-                        <input type="password" class="password" id="password-confirm" autocomplete="off">
+                        <input name="repeat" type="password" class="password" id="password-confirm" autocomplete="off">
                     </div>
                     <div class="text-line">
-                        <span class="btn btn-mini btn-submit">提交修改</span>
+                        <button class="btn btn-mini btn-submit">提交修改</button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

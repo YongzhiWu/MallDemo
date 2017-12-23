@@ -15,9 +15,29 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-CREATE DATABASE IF NOT EXISTS `malldemo`;
+--
+-- Table structure for table `productclass`
+--
 
-USE `malldemo`; 
+DROP TABLE IF EXISTS `productclass`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `productclass` (
+  `ClassId` int(20) unsigned AUTO_INCREMENT,
+  `ClassName` varchar(50) NOT NULL,
+  PRIMARY KEY (`ClassId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `productclass`
+--
+
+LOCK TABLES `productclass` WRITE;
+/*!40000 ALTER TABLE `productclass` DISABLE KEYS */;
+/*!40000 ALTER TABLE `productclass` ENABLE KEYS */;
+UNLOCK TABLES;
+
 --
 -- Table structure for table `productinfo`
 --
@@ -26,9 +46,9 @@ DROP TABLE IF EXISTS `productinfo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `productinfo` (
-  `ProductId` varchar(20) NOT NULL,
+  `ProductId` int(20) unsigned AUTO_INCREMENT,
   `ShopCartId` varchar(20) DEFAULT NULL,
-  `ProductTypeId` varchar(20) DEFAULT NULL,
+  `ProductTypeId` int(20) unsigned DEFAULT NULL,
   `OrderId` varchar(20) DEFAULT NULL,
   `ProductName` varchar(200) DEFAULT NULL,
   `ProductPrice` varchar(20) DEFAULT NULL,
@@ -62,9 +82,12 @@ DROP TABLE IF EXISTS `producttypeinfo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `producttypeinfo` (
-  `ProductTypeId` varchar(20) NOT NULL,
+  `ProductTypeId` int(20) unsigned AUTO_INCREMENT,
   `ProductTypeName` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`ProductTypeId`)
+  `ClassId` int(20) unsigned DEFAULT NULL,
+  PRIMARY KEY (`ProductTypeId`),
+  KEY `FK_ID` (`ClassId`),
+  CONSTRAINT `FK_ID` FOREIGN KEY (`ClassId`) REFERENCES `productclass` (`ClassId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -161,6 +184,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES ('1513774051868',NULL,'123','12','12','12',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -174,10 +198,11 @@ DROP TABLE IF EXISTS `userorder`;
 CREATE TABLE `userorder` (
   `OrderId` varchar(20) NOT NULL,
   `ReceiveAddId` varchar(20) DEFAULT NULL,
-  `OrderData` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `OrderTime` datetime DEFAULT NULL,
   `OrderTotalPrice` varchar(20) DEFAULT NULL,
   `Ispay` varchar(20) DEFAULT NULL,
   `PayMethod` varchar(20) DEFAULT NULL,
+  `OrderData` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`OrderId`),
   KEY `ReceiveAddId` (`ReceiveAddId`),
   CONSTRAINT `userorder_ibfk_1` FOREIGN KEY (`ReceiveAddId`) REFERENCES `receiveadd` (`ReceiveAddId`)
@@ -202,4 +227,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-15 21:32:35
+-- Dump completed on 2017-12-21 20:52:42

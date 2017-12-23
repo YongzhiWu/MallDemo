@@ -12,7 +12,8 @@ export default class extends think.controller.base {
       let password = this.post('password');
       console.log(username)
       if (!(username == 'hust' && password == 'eic')) {
-        return this.error(403, '用户名或密码不正确');
+        this.assign('error', true);
+        return this.display();
       } else {
         await this.session('userinfo', {
           username: username,
@@ -21,6 +22,7 @@ export default class extends think.controller.base {
         return this.redirect('/admin/index');
       }
     }
+    this.assign('error', false);
     return this.display();
   }
 }

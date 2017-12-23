@@ -6,3 +6,10 @@
 {% block content %}
 
 {% endblock %}
+{% block script %}
+<script>
+    $(document).ready(function () {
+        $('.main-nav>li:nth-child(2)').addClass('active');
+    });
+</script>
+{% endblock %}

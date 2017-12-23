@@ -1,22 +1,27 @@
-{% extends './admin.html' %} {% block title %}添加品类{% endblock %} {% block style %}
+{% extends './admin.html' %} {% block title %}品类管理{% endblock %} {% block style %}
 <style>
     .panel-body .search-mode {
         height: 34px;
         border: 1px solid #ccc;
         display: inline-block;
     }
+
+    .type-item input {
+        display: inline-block;
+        width: 74%;
+    }
 </style>
 {% endblock %} {% block content %}
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <h3 class="panel-title">添加品类</h3>
+        <h3 class="panel-title">品类编辑</h3>
     </div>
     <div class="panel-body">
         <form class="form-horizontal" role="form" method="post">
             <div class="form-group">
                 <label for="name" class="col-sm-2 control-label">品类名称</label>
                 <div class="col-sm-6">
-                    <input name="type" type="text" class="form-control" id="name" placeholder="请输入品类名称">
+                    <input name="class-{{ ClassItem.ClassId }}" type="text" class="form-control" id="name" value="{{ ClassItem.ClassName}}">
                 </div>
             </div>
             <div class="form-group new">
@@ -27,6 +32,14 @@
                     </button>
                 </div>
             </div>
+            {% for item in TypeItems %}
+            <div class="form-group type-item">
+                <label for="name" class="col-sm-2 control-label"></label>
+                <div class="col-sm-8">
+                    <input name="type-{{ item.ProductTypeId }}" type="text" class="form-control" value="{{ item.ProductTypeName}}">
+                </div>
+            </div>
+            {% endfor %}
             <div class="form-group submit-btn">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-primary">提交</button>
@@ -44,7 +57,7 @@
         var newEl = document.createElement('div');
         $(newEl).addClass('form-group');
         newEl.innerHTML =
-            '<div class="col-sm-offset-2 col-sm-6"><input name="child-type" type="text" class="form-control" id="child-name" placeholder="请输入子品类名称"></div>';
+            '<div class="col-sm-offset-2 col-sm-6"><input name="new-child" type="text" class="form-control" placeholder="请输入子品类名称"></div>';
         $('.form-group.submit-btn').before(newEl);
     }
 </script>

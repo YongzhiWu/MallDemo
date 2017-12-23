@@ -21,11 +21,16 @@
                 </tr>
             </thead>
             <tbody>
+                {% for item in ClassItems %}
                 <tr>
-                    <td>100001</td>
-                    <td>家用电器</td>
-                    <td>修改名称</td>
+                    <td>{{ item.ClassId }}</td>
+                    <td>{{ item.ClassName }}</td>
+                    <td>
+                        <a href="/admin/product/cate_delete/classid/{{item.ClassId}}">删除品类</a>
+                        <a href="/admin/product/cate_edit/classid/{{item.ClassId}}">查看编辑</a>
+                    </td>
                 </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
@@ -33,6 +38,9 @@
 {% endblock %}
 {% block script %}
 <script>
+    $(document).ready(function () {
+        $('.main-nav>li:nth-child(2)').addClass('active');
+    });
     function newProduct(){
         window.location.href = '/admin/product/new';
     }
