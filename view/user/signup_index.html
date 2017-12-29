@@ -1,7 +1,5 @@
 {% extends '../home/parent.html' %} {% block title %}用户注册{% endblock%} {% block style %}
-<link rel="stylesheet" href="/static/css/login.css">
-
-{% endblock %} {% block header %}
+<link rel="stylesheet" href="/static/css/login.css"> {% endblock %} {% block header %}
 <div class="header-simple">
     <div class="w">
         <a href="/home" class="logo">HUSTMall</a>
@@ -58,13 +56,12 @@
                 <a class="user-btn" id="submit">立即注册</a>
             </form>
             <div class="link-item">
-                <a class="link" href="/user/login">已有帐号，去登录>></a>
+                <a class="link" href="/user/login" style="cursor:pointer">已有帐号，去登录>></a>
             </div>
         </div>
     </div>
 </div>
-{% endblock %}
-{% block script %}
+{% endblock %} {% block script %}
 <script type="text/javascript">
     $(document).ready(function() {
         $("#submit").click(function() { 
