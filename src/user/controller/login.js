@@ -14,8 +14,7 @@ export default class extends Base {
       let password = this.post('password');
       let data = await this.model('user').where({UserName:username,UserPwd:password}).find();
       if(think.isEmpty(data)){
-        this.assign('isRight', false);
-        return this.display();
+        return this.fail(1000, '密码错误！');
       }else{
         await this.session('userinfo', data);
         let nexturl =await this.session('nexturl');

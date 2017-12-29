@@ -1,8 +1,70 @@
 {% extends '../home/parent.html' %} {% block title %}用户注册{% endblock%} {% block style %}
 <link rel="stylesheet" href="/static/css/login.css">
-<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+{% endblock %} {% block header %}
+<div class="header-simple">
+    <div class="w">
+        <a href="/home" class="logo">HUSTMall</a>
+    </div>
+</div>
+{% endblock %} {% block content %}
+<div class="user-wrap">
+    <div class="user-con w">
+        <div class="user-title">用户注册</div>
+        <div class="user-box">
+            <form action="" method="post" id="form_login">
+                <div class="err-item">
+                    <i class="glyphicon-remove"></i>
+                    <small class="err-msg">Error</small>
+                </div>
+                <div class="user-item">
+                    <label class="user-label" for="username">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </label>
+                    <input name="username" type="text" class="user-content" id="username" placeholder="请输入用户名" autocomplete="off" />
+                </div>
+                <div class="user-item">
+                    <label class="user-label" for="password">
+                        <span class="glyphicon glyphicon-lock"></span>
+                    </label>
+                    <input name="password" type="password" class="user-content" id="password" placeholder="请输入密码" />
+                </div>
+                <div class="user-item">
+                    <label class="user-label" for="repassword">
+                        <span class="glyphicon glyphicon-lock"></span>
+                    </label>
+                    <input name="repassword" type="password" class="user-content" id="repassword" placeholder="请再次输入密码" />
+                </div>
+                <div class="user-item">
+                    <label class="user-label" for="phone">
+                        <span class="glyphicon glyphicon-earphone"></span>
+                    </label>
+                    <input name="phone" type="phone" class="user-content" id="phone" placeholder="请输入电话" />
+                </div>
+                <div class="user-item">
+                    <label class="user-label" for="email">
+                        <span class="glyphicon glyphicon-envelope"></span>
+                    </label>
+                    <input name="email" type="mail" class="user-content" id="email" placeholder="请输入邮箱" />
+                </div>
+                <div class="user-item">
+                    <label class="user-label" for="question"><i class="glyphicon glyphicon-question-sign"></i></label>
+                    <input type="text" class="user-content" id="question" placeholder="输入密码提示问题" autocomplete="off" />
+                </div>
+                <div class="user-item">
+                    <label class="user-label" for="answer"><i class="glyphicon glyphicon-pencil"></i></label>
+                    <input type="text" class="user-content" id="answer" placeholder="输入密码提示答案" autocomplete="off" />
+                </div>
+                <a class="user-btn" id="submit">立即注册</a>
+            </form>
+            <div class="link-item">
+                <a class="link" href="/user/login">已有帐号，去登录>></a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block script %}
 <script type="text/javascript">
     $(document).ready(function() {
         $("#submit").click(function() { 
@@ -97,66 +159,4 @@
         });
     });
 </script>
-{% endblock %} {% block header %}
-<div class="header-simple">
-    <div class="w">
-        <a href="/home" class="logo">HUSTMall</a>
-    </div>
-</div>
-{% endblock %} {% block content %}
-<div class="user-wrap">
-    <div class="user-con w">
-        <div class="user-title">用户注册</div>
-        <div class="user-box">
-            <form action="" method="post" id="form_login">
-                <div class="err-item">
-                    <i class="glyphicon-remove"></i>
-                    <small class="err-msg">Error</small>
-                </div>
-                <div class="user-item">
-                    <label class="user-label" for="username">
-                        <span class="glyphicon glyphicon-user"></span>
-                    </label>
-                    <input name="username" type="text" class="user-content" id="username" placeholder="请输入用户名" autocomplete="off" />
-                </div>
-                <div class="user-item">
-                    <label class="user-label" for="password">
-                        <span class="glyphicon glyphicon-lock"></span>
-                    </label>
-                    <input name="password" type="password" class="user-content" id="password" placeholder="请输入密码" />
-                </div>
-                <div class="user-item">
-                    <label class="user-label" for="repassword">
-                        <span class="glyphicon glyphicon-lock"></span>
-                    </label>
-                    <input name="repassword" type="password" class="user-content" id="repassword" placeholder="请再次输入密码" />
-                </div>
-                <div class="user-item">
-                    <label class="user-label" for="phone">
-                        <span class="glyphicon glyphicon-earphone"></span>
-                    </label>
-                    <input name="phone" type="phone" class="user-content" id="phone" placeholder="请输入电话" />
-                </div>
-                <div class="user-item">
-                    <label class="user-label" for="email">
-                        <span class="glyphicon glyphicon-envelope"></span>
-                    </label>
-                    <input name="email" type="mail" class="user-content" id="email" placeholder="请输入邮箱" />
-                </div>
-                <div class="user-item">
-                    <label class="user-label" for="question"><i class="glyphicon glyphicon-question-sign"></i></label>
-                    <input type="text" class="user-content" id="question" placeholder="输入密码提示问题" autocomplete="off" />
-                </div>
-                <div class="user-item">
-                    <label class="user-label" for="answer"><i class="glyphicon glyphicon-pencil"></i></label>
-                    <input type="text" class="user-content" id="answer" placeholder="输入密码提示答案" autocomplete="off" />
-                </div>
-                <a class="user-btn" id="submit">立即注册</a>
-            </form>
-            <div class="link-item">
-                <a class="link" href="/user/login">已有帐号，去登录>></a>
-            </div>
-        </div>
-    </div>
-</div>
 {% endblock %}
