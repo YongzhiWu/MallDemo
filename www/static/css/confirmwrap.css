@@ -30,6 +30,10 @@
     cursor: pointer;
   }
   
+  .confirm-wrap .panel .address-item.active {
+    border: 3px dashed #c60023;
+  }
+  
   .confirm-wrap .panel .address-item:hover {
     background: #eee;
   }

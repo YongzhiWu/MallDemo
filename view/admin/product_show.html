@@ -1,15 +1,195 @@
-{% extends './admin.html' %} 
-{% block title %}首页管理{% endblock %}
+{% extends './admin.html' %} {% block title %}首页管理{% endblock %} {% block style %}
+<style>
+    .tab-nav {
+        width: 1080px;
+        margin: 0 auto;
+    }
+</style>
+{% endblock %} {% block content %}
+<ul class="tab-nav nav nav-pills nav-justified">
+    <li class="active">
+        <a href="#cate" data-toggle="tab">侧边导航栏管理</a>
+    </li>
+    <li>
+        <a href="#carousel" data-toggle="tab">轮播图管理</a>
+    </li>
+    <li>
+        <a href="#floor" data-toggle="tab">Floor管理</a>
+    </li>
+</ul>
+<!-- 标签页内容 -->
+<div id="tab-project" class="tab-content">
 
-{% block style %} {% endblock %} 
+    <div class="tab-pane panel panel-primary fade in active" id="cate">
+        <div class="panel-body">
+            <form class="navbar-form">
+                <div class="form-group">
+                    <select id="classid" name="ClassId" class="form-control" onchange="selectChange(this)">
+                        <option value="--">请选择品类</option>
+                        {% for item in ClassItems %}
+                        <option value="{{ item.ClassId }}">{{ item.ClassName }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select id="child-class" class="form-control" name="TypeId" disabled="true">
+                        <option value="--">请选择商品种类</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select id="rowid" class="form-control">
+                        <option value="">请选择行编号</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
+                <button type="button" onclick="cateUpdate()" class="btn btn-primary">添加至侧边导航栏</button>
+            </form>
+        </div>
+        <div class="panel-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>侧边导航栏行编号</th>
+                        <th>商品种类id</th>
+                        <th>商品种类名称</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in CateItems %}
+                    <tr>
+                        <th>{{ item.row }}</th>
+                        <th>{{ item.ProductTypeId }}</th>
+                        <th>{{ item.ProductTypeName }}</th>
+                        <th>
+                            <a href="/admin/product/cate_delete/producttypeid/{{item.ProductTypeId}}">删除</a>
+                        </th>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-{% block content %}
+    <div class="tab-pane panel panel-primary fade" id="carousel">
+        <div class="panel-body">
+            <form class="navbar-form">
+                <div class="form-group">
+                    <input id="productid" type="text" name="productid" class="form-control" placeholder="请输入商品id">
+                </div>
+                <button type="button" onclick="carouselUpdate()" class="btn btn-primary">添加至轮播图</button>
+            </form>
+        </div>
+        <div class="panel-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>轮播图id</th>
+                        <th>商品id</th>
+                        <th>商品名称</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in CarouselItems %}
+                    <tr>
+                        <th>{{ item.id }}</th>
+                        <th>{{ item.ProductId }}</th>
+                        <th>{{ item.ProductName }}</th>
+                        <th>
+                            <a href="/admin/product/carousel_delete/id/{{item.id}}">删除</a>
+                        </th>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-{% endblock %}
-{% block script %}
+    <div class="tab-pane panel panel-primary fade row" id="floor">
+
+    </div>
+</div>
+{% endblock %} {% block script %}
 <script>
     $(document).ready(function () {
         $('.main-nav>li:nth-child(2)').addClass('active');
     });
+
+    function selectChange(select) {
+        $("#child-class").html('');
+        var value = select.value;
+        $.ajax({
+            url: '/admin/product/addtypeselect',
+            type: 'POST',
+            dateType: 'json',
+            data: {
+                ClassValue: value
+            },
+            success: function (result) {
+                document.getElementById('child-class').disabled = false;
+                var items = result.data;
+                for (var i = 0; i < items.length; i++) {
+                    $("#child-class").append(
+                        '<option value="' + items[i].ProductTypeId + '">' + items[i].ProductTypeName +
+                        '</option>'
+                    );
+                }
+            }
+        });
+    }
+
+    function cateUpdate() {
+        var productclass = $('select#classid').val();
+        var type = $('select#child-class').val();
+        var row = $('select#rowid').val();
+        $.ajax({
+            url: '/admin/product/cate_update',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                classid: productclass,
+                typeid: type,
+                rowid: row
+            },
+            success: res => {
+                if (!res.errno) {
+                    alert('添加成功！');
+                    window.location.href = '/admin/product/show';
+                } else {
+                    alert(res.errmsg);
+                }
+            }
+        })
+    }
+
+    function carouselUpdate(){
+        var product = $('#productid').val();
+        $.ajax({
+            url: '/admin/product/carousel_update',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                productid: product
+            },
+            success: res => {
+                if (!res.errno) {
+                    alert('添加成功！');
+                    window.location.href = '/admin/product/show';
+                } else {
+                    alert(res.errmsg);
+                }
+            }
+        })
+    }
 </script>
 {% endblock %}

@@ -47,21 +47,15 @@ DROP TABLE IF EXISTS `productinfo`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `productinfo` (
   `ProductId` int(20) unsigned AUTO_INCREMENT,
-  `ShopCartId` varchar(20) DEFAULT NULL,
   `ProductTypeId` int(20) unsigned DEFAULT NULL,
-  `OrderId` varchar(20) DEFAULT NULL,
   `ProductName` varchar(200) DEFAULT NULL,
   `ProductPrice` varchar(20) DEFAULT NULL,
   `ProductOutline` varchar(200) DEFAULT NULL,
   `ProductStorage` varchar(20) DEFAULT NULL,
   `ProductPic` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`ProductId`),
-  KEY `ShopCartId` (`ShopCartId`),
-  KEY `ProductTypeId` (`ProductTypeId`),
-  KEY `OrderId` (`OrderId`),
-  CONSTRAINT `productinfo_ibfk_1` FOREIGN KEY (`ShopCartId`) REFERENCES `shopcart` (`ShopCartId`),
-  CONSTRAINT `productinfo_ibfk_2` FOREIGN KEY (`ProductTypeId`) REFERENCES `producttypeinfo` (`ProductTypeId`),
-  CONSTRAINT `productinfo_ibfk_3` FOREIGN KEY (`OrderId`) REFERENCES `userorder` (`OrderId`)
+  KEY `productinfo_ibfk_2` (`ProductTypeId`),
+  CONSTRAINT `productinfo_ibfk_1` FOREIGN KEY (`ProductTypeId`) REFERENCES `producttypeinfo` (`ProductTypeId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -158,6 +152,33 @@ LOCK TABLES `shopcart` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `shopcart_productinfo`
+--
+
+DROP TABLE IF EXISTS `shopcart_productinfo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `shopcart_productinfo` (
+  `shopcartid` varchar(20) NOT NULL,
+  `productid` int(20) unsigned NOT NULL,
+  `count` int(20) unsigned NOT NULL,
+  PRIMARY KEY (`shopcartid`,`productid`),
+  KEY `shopcart_productinfo1` (`productid`),
+  CONSTRAINT `shopcart_productinfo2` FOREIGN KEY (`shopcartid`) REFERENCES `shopcart` (`ShopCartId`),
+  CONSTRAINT `shopcart_productinfo1` FOREIGN KEY (`productid`) REFERENCES `productinfo` (`ProductId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `shopcart_productinfo`
+--
+
+LOCK TABLES `shopcart_productinfo` WRITE;
+/*!40000 ALTER TABLE `shopcart_productinfo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `shopcart_productinfo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user`
 --
 
@@ -166,7 +187,7 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
   `UserId` varchar(20) NOT NULL,
-  `ShopCartId` varchar(20) DEFAULT NULL,
+  `shopcartid` varchar(20) DEFAULT NULL,
   `UserName` varchar(20) DEFAULT NULL,
   `UserPwd` varchar(20) DEFAULT NULL,
   `UserTel` varchar(20) DEFAULT NULL,
@@ -217,6 +238,32 @@ LOCK TABLES `userorder` WRITE;
 /*!40000 ALTER TABLE `userorder` DISABLE KEYS */;
 /*!40000 ALTER TABLE `userorder` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `userorder_productinfo`
+--
+
+DROP TABLE IF EXISTS `userorder_productinfo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `userorder_productinfo` (
+  `orderid` varchar(20) NOT NULL,
+  `productid` int(20) unsigned NOT NULL,
+  PRIMARY KEY (`orderid`,`productid`),
+  KEY `userorder_productinfo2` (`productid`),
+  CONSTRAINT `userorder_productinfo2` FOREIGN KEY (`productid`) REFERENCES `productinfo` (`ProductId`),
+  CONSTRAINT `userorder_productinfo1` FOREIGN KEY (`orderid`) REFERENCES `userorder` (`OrderId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `userorder_productinfo`
+--
+
+LOCK TABLES `userorder_productinfo` WRITE;
+/*!40000 ALTER TABLE `userorder_productinfo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `userorder_productinfo` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -227,4 +274,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-21 20:52:42
+-- Dump completed on 2017-12-23 22:35:31

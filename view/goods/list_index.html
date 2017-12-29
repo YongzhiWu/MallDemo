@@ -1,13 +1,6 @@
-{% extends '../home/parent.html' %}
-{% block title %}商品列表{% endblock %}
-
-{% block style %}
+{% extends '../home/parent.html' %} {% block title %}商品列表{% endblock %} {% block style %}
 <link rel="stylesheet" href="/static/css/crumb.css">
-<link rel="stylesheet" href="/static/css/listwrap.css">
-{% endblock %}
-
-{% block content %}
-{% include './crumb.html' %}
+<link rel="stylesheet" href="/static/css/listwrap.css"> {% endblock %} {% block content %} {% include './crumb.html' %}
 <div class="site-list">
     <div class="m-div">
         <ul class="sorter-con">
@@ -20,21 +13,23 @@
             </li>
         </ul>
         <ul class="goods-list-con">
+            {% for item in ProductItems %}
             <li class="goods-item">
                 <div class="goods-img-con">
-                    <a href="" class="goods-link" target="_blank">
-                        <img class="goods-img" src="../assets/goods/tv.jpg" alt="【测试学习使用】Hisense/海信 LED55EC720US 55吋4K高清智能网络平板液晶电视机">
+                    <a href="/goods/detail/index/productid/{{item.ProductId}}" class="goods-link" target="_blank">
+                        <img class="goods-img" src="{{ item.ProductPic }}" alt="{{ item.ProductOutline }}">
                     </a>
                 </div>
                 <div class="goods-price-con">
-                    <span class="goods-price">￥4199</span>
+                    <span class="goods-price">￥{{ item.ProductPrice }}</span>
                 </div>
                 <div class="goods-name-con">
-                    <a href="" class="goods-name" target="_blank" title="【测试学习使用】Hisense/海信 LED55EC720US 55吋4K高清智能网络平板液晶电视机">
-                        【测试学习使用】Hisense/海信 LED55EC720US 55吋4K高清智能网络平板液晶电视机
+                    <a href="/goods/detail/index/productid/{{item.ProductId}}" class="goods-name" target="_blank" title="{{ itme.ProductOutline }}">
+                        {{ item.ProductName }}
                     </a>
                 </div>
             </li>
+            {% endfor %}
         </ul>
     </div>
 </div>

@@ -1,104 +1,177 @@
-{% extends '../home/parent.html' %}
-{% block title %}购物车{% endblock %}
-{% block style %}
+{% extends '../home/parent.html' %} {% block title %}购物车{% endblock %} {% block style %}
 <link rel="stylesheet" href="/static/css/crumb.css">
-<link rel="stylesheet" href="/static/css/cartwrap.css">
-{% endblock %}
-
-{% block content %}
-{% include '../goods/crumb.html' %}
+<link rel="stylesheet" href="/static/css/cartwrap.css"> {% endblock %} {% block content %} {% include '../goods/crumb.html' %}
 <div class="site-cart cart-wrap">
-  <div class="m-div">
-      <div class="cart-header">
-          <table class="cart-table">
-              <tbody>
-                  <tr>
-                      <th class="cart-cell cell-check">
-                          <label> <input type="checkbox" class="cart-select-all" checked="checked">
-                              <span>全选</span>
-                          </label>
-                      </th>
-                      <th class="cart-cell cell-info">商品信息</th>
-                      <th class="cart-cell cell-price">单价</th>
-                      <th class="cart-cell cell-count">数量</th>
-                      <th class="cart-cell cell-total">合计</th>
-                      <th class="cart-cell cell-opera">操作</th>
-                  </tr>
-              </tbody>
-          </table>
-      </div>
-      <div class="cart-list">
-          <table class="cart-table" data-product-id="28" data-checked="1">
-              <tbody>
-                  <tr>
-                      <td class="cart-cell cell-check"> <input type="checkbox" class="cart-select" checked="checked"> </td>
-                      <td class="cart-cell cell-img">
-                          <a href="./detail.html?productId=28" target="_blank"><img class="p-img" src="http://img.happymmall.com/0093f5d3-bdb4-4fb0-bec5-5465dfd26363.jpeg" alt="【测试学习使用】4+64G送手环/Huawei/华为 nova 手机P9/P10plus青春"></a>
-                      </td>
-                      <td class="cart-cell cell-info">
-                          <a class="link p-name" href="./detail.html?productId=28" target="_blank">【测试学习使用】4+64G送手环/Huawei/华为 nova 手机P9/P10plus青春</a>
-                      </td>
-                      <td class="cart-cell cell-price">￥1999</td>
-                      <td class="cart-cell cell-count">
-                          <span class="count-btn" data-opera-type="minus">-</span> <input class="count-input" data-max="0" value="0">
-                          <span class="count-btn" data-opera-type="plus">+</span>
-                      </td>
-                      <td class="cart-cell cell-total">￥0</td>
-                      <td class="cart-cell cell-opera">
-                          <a class="link cart-delete">删除</a>
-                      </td>
-                  </tr>
-              </tbody>
-          </table>
-          <table class="cart-table" data-product-id="29" data-checked="1">
-              <tbody>
-                  <tr>
-                      <td class="cart-cell cell-check"> <input type="checkbox" class="cart-select" checked="checked"> </td>
-                      <td class="cart-cell cell-img">
-                          <a href="./detail.html?productId=29" target="_blank"><img class="p-img" src="http://img.happymmall.com/173335a4-5dce-4afd-9f18-a10623724c4e.jpeg" alt="【测试学习使用】Haier/海尔HJ100-1HU1 10公斤滚筒洗衣机全自动带烘干大容量 洗烘一体 厨卫家电"></a>
-                      </td>
-                      <td class="cart-cell cell-info">
-                          <a class="link p-name" href="./detail.html?productId=29" target="_blank">【测试学习使用】Haier/海尔HJ100-1HU1 10公斤滚筒洗衣机全自动带烘干大容量 洗烘一体 厨卫家电</a>
-                      </td>
-                      <td class="cart-cell cell-price">￥4299</td>
-                      <td class="cart-cell cell-count">
-                          <span class="count-btn" data-opera-type="minus">-</span> <input class="count-input" data-max="9545" value="1">
-                          <span class="count-btn" data-opera-type="plus">+</span>
-                      </td>
-                      <td class="cart-cell cell-total">￥4299</td>
-                      <td class="cart-cell cell-opera">
-                          <a class="link cart-delete">删除</a>
-                      </td>
-                  </tr>
-              </tbody>
-          </table>
-      </div>
-      <div class="cart-footer clear">
-          <div class="select-con">
-              <label> <input type="checkbox" class="cart-select-all" checked="checked">
-                  <span>全选</span>
-              </label>
-          </div>
-          <div class="delete-con">
-              <a class="cart-delete-seleced link">
-                  <span class="glyphicon glyphicon-trash"></span>
-                  <span>删除选中</span>
-              </a>
-          </div>
-          <div class="submit-con">
-              <span>总价：</span>
-              <span class="submit-total">￥4299</span>
-              <span class="btn submit-btn" onclick="confirm()">去结算</span>
-          </div>
-      </div>
-  </div>
+    <div class="m-div">
+        <div class="cart-header">
+            <table class="cart-table">
+                <tbody>
+                    <tr>
+                        <th class="cart-cell cell-check">
+                            <label>
+                                <input type="checkbox" class="cart-select-all" checked="">
+                                <span>全选</span>
+                            </label>
+                        </th>
+                        <th class="cart-cell cell-info">商品信息</th>
+                        <th class="cart-cell cell-price">单价</th>
+                        <th class="cart-cell cell-count">数量</th>
+                        <th class="cart-cell cell-total">合计</th>
+                        <th class="cart-cell cell-opera">操作</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="cart-list">
+            {% for item in CartItems %}
+            <table class="cart-table" data-product-id="{{ item.productid }}" data-checked="1">
+                <tbody>
+                    <tr>
+                        <td class="cart-cell cell-check">
+                            <input type="checkbox" class="cart-select" checked=false> </td>
+                        <td class="cart-cell cell-img">
+                            <a href="/goods/detail/index/productid/{{ item.productid }}" target="_blank">
+                                <img class="p-img" src="{{ item.ProductPic }}" alt="{{ item.ProductName }}">
+                            </a>
+                        </td>
+                        <td class="cart-cell cell-info">
+                            <a class="link p-name" href="/goods/detail/index/productid/{{ item.productid }}" target="_blank">{{ item.ProductName }}</a>
+                        </td>
+                        <td data-product-price="{{ item.ProductPrice }}" class="cart-cell cell-price">￥{{ item.ProductPrice }}</td>
+                        <td class="cart-cell cell-count">
+                            <span class="count-btn" data-opera-type="minus" onclick="minus(this)">-</span>
+                            <input id="{{ item.productid }}" disabled="disabled" class="count-input" data-max="{{ item.ProductStorage }}" value="{{ item.count }}">
+                            <span class="count-btn" data-opera-type="plus" onclick="plus(this)">+</span>
+                        </td>
+                        <td class="cart-cell cell-total" data-price="{{ item.ProductPrice }}" data-count="{{ item.count }}">￥{{ item.ProductPrice * item.count }}</td>
+                        <td class="cart-cell cell-opera">
+                            <a href="/cart/update/delete/productid/{{ item.productid }}" class="link cart-delete">删除</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            {% endfor %}
+        </div>
+        <div class="cart-footer clear">
+            <div class="select-con">
+                <label>
+                    <input type="checkbox" class="cart-select-all" checked=true>
+                    <span>全选</span>
+                </label>
+            </div>
+            <div class="delete-con">
+                <a class="cart-delete-seleced link">
+                    <span class="glyphicon glyphicon-trash"></span>
+                    <span>删除选中</span>
+                </a>
+            </div>
+            <div class="submit-con">
+                <span>总价：</span>
+                <span class="submit-total"></span>
+                <span class="btn submit-btn" onclick="confirm()">去结算</span>
+            </div>
+        </div>
+    </div>
 </div>
-{% endblock %}
-
-{% block script %}
+{% endblock %} {% block script %}
 <script>
-    function confirm(){
-        window.location.href = '/order/confirm';
+    $(document).ready(function () {
+        updateTotal();
+    });
+
+    function updateTotal() {
+        var items = $('.cart-list .cell-total');
+        var total = 0;
+        items.each(function (index, el) {
+            total = total + $(el).attr('data-count') * $(el).attr('data-price');
+        });
+        $('.submit-total').text('￥' + total);
     }
+
+    function confirm() {
+        var url = '/order/confirm/index';
+        $('table[data-checked=1]').each(function (index, item) {
+            var productid = $(item).attr('data-product-id');
+            url = url + '/productid-' + productid + '/' + productid;
+        });
+        console.log(url);
+        window.location.href = url;
+    }
+
+    function plus(el) {
+        var input = $(el).siblings('input');
+        var count = parseInt(input.val());
+        var total = $(el).parent().siblings('.cell-total');
+        var price = $(el).parent().siblings('.cell-price').attr('data-product-price');
+        count = count + 1;
+        var totalPrice = count * price;
+        $.ajax({
+            url: '/cart/update/index',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                productid: input.attr('id'),
+                count: count
+            },
+            success: res => {
+                if (!res.errno) {
+                    input.val(count);
+                    total.text('￥' + totalPrice);
+                    total.attr('data-count', count);
+                    updateTotal();
+                } else {
+                    alert('商品数量更新失败！');
+                }
+            }
+        });
+    }
+
+    function minus(el) {
+        var input = $(el).siblings('input');
+        var count = parseInt(input.val());
+        if (count > 1) {
+            var total = $(el).parent().siblings('.cell-total');
+            var price = $(el).parent().siblings('.cell-price').attr('data-product-price');
+            count = count - 1;
+            var totalPrice = count * parseInt(price);
+            $.ajax({
+                url: '/cart/update/index',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    productid: input.attr('id'),
+                    count: count
+                },
+                success: res => {
+                    if (!res.errno) {
+                        input.val(count);
+                        total.text('￥' + totalPrice);
+                        total.attr('data-count', count);
+                        updateTotal();
+                    } else {
+                        alert('商品数量更新失败！');
+                    }
+                }
+            })
+        }
+    }
+
+    $(".cart-select-all").change(function (event) {
+        var check = $(this).prop('checked');
+        console.log(check);
+        if (check == true) {
+            console.log('1')
+            $('input[type=checkbox]').prop('checked', false);
+        } else {
+            console.log('2')
+            $('input[type=checkbox]').prop('checked', true);
+        }
+    })
+
+    $(".cart-select").change(function (event) {
+        console.log(this.checked);
+
+        console.log(this.checked);
+    })
 </script>
 {% endblock %}

@@ -1,6 +1,8 @@
 'use strict';
 
 import Base from './base.js';
+import fs from 'fs';
+import path from 'path';
 
 export default class extends Base {
   /**
@@ -46,11 +48,6 @@ export default class extends Base {
     return this.display();
   }
 
-  //网站首页展示管理
-  showAction() {
-    return this.display();
-  }
-
   //添加新商品
   async addAction() {
     if (this.isPost()) {
@@ -59,12 +56,20 @@ export default class extends Base {
       let producttype = this.post('ChildClassId');
       let price = this.post('price');
       let quantity = this.post('quantity');
+      let imagefile = this.file('image');
+      let filepath = imagefile.path;
+      let array = filepath.split("\\");
+      let basename = array[array.length-1];
+      let uploadpath = think.RESOURCE_PATH + '/static/img/product';
+      fs.renameSync(filepath, uploadpath + '/' + basename);
+      imagefile.path = uploadpath + '/' + basename;
       let addProduct = await this.model('productinfo').add({
         ProductTypeId: producttype,
         ProductName: name,
         ProductPrice: price,
         ProductOutline: description,
-        ProductStorage: quantity
+        ProductStorage: quantity,
+        ProductPic: '/static/img/product/' + basename
       });
       return this.redirect('/admin/product');
     }
@@ -207,5 +212,66 @@ export default class extends Base {
     this.assign('ClassItem', productclassData);
     this.assign('TypeItems', producttypeData);
     return this.display();
+  }
+
+  //主页管理
+  async showAction(){
+
+    //侧边导航栏管理
+    let productclass = this.model('productclass');
+    let ClassData = await productclass.select();
+    this.assign('ClassItems', ClassData);
+    let cateData = await this.model('cate').select();
+    var item;
+    for(item in cateData){
+      let producttypeData = await this.model('producttypeinfo').where({ProductTypeId: cateData[item].ProductTypeId}).find();
+      cateData[item]['ProductTypeName'] = producttypeData.ProductTypeName;
+    }
+    this.assign('CateItems', cateData);
+
+    //轮播图管理
+    let carouselData = await this.model('carousel').select();
+    for(item in carouselData){
+      let productData = await this.model('productinfo').where({ProductId: carouselData[item].ProductId}).find();
+      carouselData[item]['ProductName'] = productData.ProductName;
+    }
+    this.assign('CarouselItems', carouselData);
+
+    return this.display();
+  }
+
+  //侧边导航栏更新
+  async cateUpdateAction(){
+    let classid = this.post('classid');
+    let typeid = this.post('typeid');
+    let rowid = this.post('rowid');
+    let updateData = await this.model('cate').add({
+      row: parseInt(rowid),
+      ProductTypeId: parseInt(typeid)
+    });
+    return this.success();
+  }
+
+  //侧边导航栏删除
+  async cateDeleteAction(){
+    let producttypeid = this.get('productid');
+    let deleteData = await this.model('cate').where({ProductTypeId: producttypeid}).delete();
+    return this.redirect('/admin/product/show');
+  }
+
+  //轮播图更新
+  async carouselUpdateAction(){
+    let productid = this.post('productid');
+    let updateData = await this.model('carousel').add({
+      ProductId: productid
+    });
+    return this.success();
+  }
+
+  //轮播图删除
+  async carouselDeleteAction(){
+    let id = this.get('id');
+    let deleteData = await this.model('carousel').where({id: id}).delete();
+    return this.redirect('/admin/product/show');
   }
 }

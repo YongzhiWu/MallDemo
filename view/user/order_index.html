@@ -31,87 +31,45 @@
                                 </tr>
                             </tbody>
                         </table>
+                        {% for item in OrderItems %}
                         <table class="order-list-table order-item">
                             <tbody>
                                 <tr>
                                     <td class="order-info" colspan="6">
                                         <span class="order-text">
                                             <span>订单号：</span>
-                                            <a class="link" href="/user/order/detail">1513049923844</a>
+                                            <a class="link" href="/user/order/detail/orderid/{{ item.OrderId }}">{{ item.OrderId }}</a>
                                         </span>
-                                        <span class="order-text">2017-12-12 11:38:43</span>
+                                        <span class="order-text">{{ item.OrderTime }}</span>
                                         <span class="order-text">
-                                            <span>收件人：hhh</span>
-                                        </span>
-                                        <span class="order-text">
-                                            <span>订单状态：未支付</span>
+                                            <span>收件人：{{ item.AddressData.ReceiveName }}</span>
                                         </span>
                                         <span class="order-text">
-                                            <span>订单总价：</span>
-                                            <span class="enhance">￥4299</span>
-                                        </span>
-                                        <a class="link pull-right" href="./order-detail.html?orderNumber=1513049923844">查看详情&gt;</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="order-list-cell cell-img">
-                                        <a href="./detail.html?productId=29" target="_blank"><img class="p-img" src="http://img.happymmall.com/173335a4-5dce-4afd-9f18-a10623724c4e.jpeg" alt="【测试学习使用】Haier/海尔HJ100-1HU1 10公斤滚筒洗衣机全自动带烘干大容量 洗烘一体 厨卫家电"></a>
-                                    </td>
-                                    <td class="order-list-cell cell-info">
-                                        <a class="link p-name" href="./detail.html?productId=29" target="_blank">【测试学习使用】Haier/海尔HJ100-1HU1 10公斤滚筒洗衣机全自动带烘干大容量 洗烘一体 厨卫家电</a>
-                                    </td>
-                                    <td class="order-list-cell cell-price">￥4299</td>
-                                    <td class="order-list-cell cell-count">1</td>
-                                    <td class="order-list-cell cell-total">￥4299</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table class="order-list-table order-item">
-                            <tbody>
-                                <tr>
-                                    <td class="order-info" colspan="6">
-                                        <span class="order-text">
-                                            <span>订单号：</span>
-                                            <a class="link" href="./order-detail.html?orderNumber=1513047919319">1513047919319</a>
-                                        </span>
-                                        <span class="order-text">2017-12-12 11:05:19</span>
-                                        <span class="order-text">
-                                            <span>收件人：hhh</span>
-                                        </span>
-                                        <span class="order-text">
-                                            <span>订单状态：未支付</span>
+                                            <span>订单状态：{{ item.Ispay }}</span>
                                         </span>
                                         <span class="order-text">
                                             <span>订单总价：</span>
-                                            <span class="enhance">￥2099</span>
+                                            <span class="enhance">￥{{ item.OrderTotalPrice }}</span>
                                         </span>
-                                        <a class="link pull-right" href="./order-detail.html?orderNumber=1513047919319">查看详情&gt;</a>
+                                        <a class="link pull-right" href="/user/order/detail/orderid/{{ item.OrderId }}">查看详情&gt;</a>
                                     </td>
                                 </tr>
+                                {% for product in item.ProductData %}
                                 <tr>
                                     <td class="order-list-cell cell-img">
-                                        <a href="./detail.html?productId=34" target="_blank"><img class="p-img" src="http://img.happymmall.com/dce7d4e1-98f2-485c-a365-e70015c780a1.jpg" alt="【测试学习使用】Hisense/海信 LED55EC720US 55吋4K高清智能网络平板液晶电视机"></a>
+                                        <a href="/goods/detail/index/productid/{{ product.ProductId }}" target="_blank"><img class="p-img" src="{{ product.ProductPic }}" alt="{{ product.ProductName }}"></a>
                                     </td>
                                     <td class="order-list-cell cell-info">
-                                        <a class="link p-name" href="./detail.html?productId=34" target="_blank">【测试学习使用】Hisense/海信 LED55EC720US 55吋4K高清智能网络平板液晶电视机</a>
+                                        <a class="link p-name" href="/goods/detail/index/productid/{{ product.ProductId }}" target="_blank">{{ product.ProductName }}</a>
                                     </td>
-                                    <td class="order-list-cell cell-price">￥4199</td>
-                                    <td class="order-list-cell cell-count">0</td>
-                                    <td class="order-list-cell cell-total">￥0</td>
+                                    <td class="order-list-cell cell-price">￥{{ product.ProductPrice }}</td>
+                                    <td class="order-list-cell cell-count">{{ product.count }}</td>
+                                    <td class="order-list-cell cell-total">￥{{ product.count * product.ProductPrice }}</td>
                                 </tr>
-                                <tr>
-                                    <td class="order-list-cell cell-img">
-                                        <a href="./detail.html?productId=36" target="_blank"><img class="p-img" src="http://img.happymmall.com/b6c3ffbb-2107-4b75-9a8d-71c1373f6fbc.jpg" alt="【测试学习使用】Haier/海尔 KFR-33GW/10EBBAL13U1 1.5匹 空调挂机 智能操控"></a>
-                                    </td>
-                                    <td class="order-list-cell cell-info">
-                                        <a class="link p-name" href="./detail.html?productId=36" target="_blank">【测试学习使用】Haier/海尔 KFR-33GW/10EBBAL13U1 1.5匹 空调挂机 智能操控</a>
-                                    </td>
-                                    <td class="order-list-cell cell-price">￥2099</td>
-                                    <td class="order-list-cell cell-count">1</td>
-                                    <td class="order-list-cell cell-total">￥2099</td>
-                                </tr>
+                                {% endfor %}
                             </tbody>
                         </table>
+                        {% endfor %}
                     </div>
                 </div>
                 <div class="pagination"></div>
@@ -120,4 +78,11 @@
     </div>
   </div>
 </div>
+{% endblock %}
+{% block script %}
+<script>
+    $(document).ready(function () {
+        $('.left-con>.menu>li:nth-child(2)').addClass('active');
+    });
+</script>
 {% endblock %}

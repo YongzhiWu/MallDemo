@@ -17,7 +17,7 @@
         <h3 class="panel-title">添加商品</h3>
     </div>
     <div class="panel-body">
-        <form class="form-horizontal" role="form" method="post">
+        <form class="form-horizontal" enctype="multipart/form-data" role="form" method="post">
             <div class="form-group">
                 <label for="name" class="col-sm-2 control-label">商品名称</label>
                 <div class="col-sm-8">
@@ -56,6 +56,13 @@
                 </div>
             </div>
             <div class="form-group">
+                <label for="inputfile" class="col-sm-2 control-label">商品图片</label>
+                <div class="col-sm-2">
+                    <div id="click" style="display:none"></div>
+                    <input name="image" type="file" id="photo" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg">
+                </div>
+            </div>
+            <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-primary">提交</button>
                 </div>
@@ -68,6 +75,7 @@
     $(document).ready(function () {
         $('.main-nav>li:nth-child(2)').addClass('active');
     });
+
     function selectChange(select) {
         $("#child-class").html('');
         var value = select.value;
@@ -78,16 +86,37 @@
             data: {
                 ClassValue: value
             },
-            success: function(result){
+            success: function (result) {
                 document.getElementById('child-class').disabled = false;
                 var items = result.data;
-                for(var i = 0; i<items.length; i++){
+                for (var i = 0; i < items.length; i++) {
                     $("#child-class").append(
-                        '<option value="' + items[i].ProductTypeId + '">' + items[i].ProductTypeName + '</option>'
+                        '<option value="' + items[i].ProductTypeId + '">' + items[i].ProductTypeName +
+                        '</option>'
                     );
                 }
             }
         });
     }
+
+    document.getElementById('photo').addEventListener('change', function (e) {
+        var files = this.files;
+        var img = new Image();
+        var reader = new FileReader();
+        reader.readAsDataURL(files[0]);
+        reader.onload = function (e) {
+            var mb = (e.total / 1024) / 1024;
+            if (mb >= 2) {
+                alert('文件大小大于2M');
+                return;
+            }
+            img.src = this.result;
+            img.style.width = "100%";
+            document.getElementById('click').style.display = "block";
+            document.getElementById('click').style.width = "200px";
+            document.getElementById('click').innerHTML = '';
+            document.getElementById('click').appendChild(img);
+        }
+    });
 </script>
 {% endblock %}

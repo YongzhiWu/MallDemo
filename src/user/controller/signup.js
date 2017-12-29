@@ -19,10 +19,15 @@ export default class extends Base {
       let userid = d.getTime().toString();
       let adduser = await this.model('user').add({
         UserId: userid,
+        shopcartid: userid,
         UserName:username, 
         UserPwd:password,
         UserEmail: mail,
         UserTel: phone
+      });
+      let addcart = await this.model('shopcart').add({
+        ShopCartId: userid,
+        UserId: userid
       });
       return this.redirect('./login');
     }

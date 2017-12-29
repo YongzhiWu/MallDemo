@@ -68,7 +68,7 @@
             <!-- 广告背景图 -->
             <div class="row">
                 <figure class="col-sm-12">
-                    <a href="https://www.kaola.com/" target="_blank">
+                    <a href="https://www.kaola.com/" target="_blank">       
                         <img src="/static/img/header/header.png" width="100%" alt="">
                     </a>
                 </figure>
@@ -81,9 +81,9 @@
                 </div>
                 <!-- 搜索框 -->
                 <div class="col-xs-8 col-sm-8 col-sm-offset-1 col-xs-offset-1 search">
-                    <form action="" method="post">
-                        <input name="keyword" class="search-input" type="text" placeholder="请输入商品名称">
-                        <button class="search-btn">搜索</button>
+                    <form action="/goods/list/index" method="get">
+                        <input name="keyword" id="search-input" class="search-input" type="text" placeholder="请输入商品名称">
+                        <button type="submit" class="search-btn">搜索</button>
                     </form>
                 </div>
             </div>
@@ -101,6 +101,25 @@
 
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        function search(){
+            var search = $('#search-input').val();
+            console.log(search);
+            $.ajax({
+                url: '/goods/list/search',
+                type: 'get',
+                dataType: 'json',
+                data: {
+                    keyword: search
+                },
+                success: function(result){
+                    console.log(result.data);
+                    window.location.href = '/goods/list/index';
+                    
+                }
+            })
+        }
+    </script>
     {% block script %}{% endblock %}
 </body>
 

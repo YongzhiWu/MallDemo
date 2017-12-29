@@ -1,29 +1,33 @@
-{% extends '../home/parent.html' %}
-{% block title %}订单确认{% endblock %}
-{% block style %}
+{% extends '../home/parent.html' %} {% block title %}订单确认{% endblock %} {% block style %}
 <link rel="stylesheet" href="/static/css/crumb.css">
 <link rel="stylesheet" href="/static/css/confirmwrap.css">
-{% endblock %}
-
-{% block content %}
-{% include '../goods/crumb.html' %}
+<style>
+    .form-group select {
+        height: 34px;
+        width: 45%;
+    }
+</style>
+{% endblock %} {% block content %} {% include '../goods/crumb.html' %}
 <div class="confirm-wrap">
     <div class="m-div">
         <div class="panel">
             <h2 class="panel-title">收货地址</h2>
             <div class="panel-body address-list">
-                <a class="address-item" data-id="5056">
+                {% for item in AddressItems %}
+                <a class="address-item" data-id="{{ item.ReceiveAddId }}" onclick="selectAddress(this)">
                     <div class="address-title">
-                        <span class="city">北京 北京</span>
-                        <span class="name">（ hhh 收 ）</span>
+                        <span class="city" data-province="{{ item.ReceiveProvince }}" data-city="{{ item.ReceiveCity }}">{{ item.ReceiveProvince }} {{ item.ReceiveCity }}</span>
+                        <span class="name" data-name="{{ item.ReceiveName }}">（ {{ item.ReceiveName }} 收 ）</span>
                     </div>
-                    <div class="address-detail"> hhh 12345678910 </div>
+                    <div class="address-detail" data-address="{{ item.ReceiveAdd }}" data-phone="{{ item.ReceiveTel }}" data-post="{{ item.ReceivePost }}">
+                    {{ item.ReceiveAdd }} {{ item.ReceiveTel }} </div>
                     <div class="address-opera">
-                        <span class="link address-update">编辑</span>
-                        <span class="link address-delete">删除</span>
+                        <span class="link address-update" data-toggle="modal" data-target="#myModal" onclick="edit(this)">编辑</span>
+                        <span class="link address-delete" onclick="deleteAddress(this)">删除</span>
                     </div>
                 </a>
-                <div class="address-item add">
+                {% endfor %}
+                <div class="address-item add" data-toggle="modal" data-target="#myModal" onclick="add()">
                     <div class="address-new">
                         <i class="glyphicon glyphicon-plus"></i>
                         <div class="text">使用新地址</div>
@@ -35,7 +39,7 @@
             <h2 class="panel-title">商品清单</h2>
             <div class="panel-body order-product">
                 <table class="product-table" data-product-id="" data-checked="">
-                    <tbody>
+                    <thead>
                         <tr>
                             <th width="10%">&nbsp;</th>
                             <th width="30%" style="text-align: left">商品描述</th>
@@ -43,34 +47,265 @@
                             <th width="20%" style="text-align: center">数量</th>
                             <th width="20%" style="text-align: center">小计</th>
                         </tr>
-                        <tr>
+                    </thead>
+                    <tbody>
+                        {% for item in ProductItems %}
+                        <tr data-product-id="{{ item.ProductId }}">
                             <td class="product-cell cell-img">
-                                <a href="./detail.html?productId=38" target="_blank"><img class="p-img" src="http://img.happymmall.com/e1e93f76-9882-4232-9bb2-a7b809f81d01.jpg" alt="【测试学习使用】Midea/美的 F6030-J5(HE) 速热即热式电热水器60升厨卫家电"></a>
+                                <a href="/goods/detail/index/productid/{{ item.ProductId }}" target="_blank">
+                                    <img class="p-img" src="{{ item.ProductPic }}" alt=" {{item.ProductName }}">
+                                </a>
                             </td>
                             <td align="left">
-                                <a class="link p-name" href="./detail.html?productId=38" target="_blank">【测试学习使用】Midea/美的 F6030-J5(HE) 速热即热式电热水器60升厨卫家电</a>
+                                <a class="link p-name" href="/goods/detail/index/productid/{{ item.ProductId }}" target="_blank">{{ item.ProductName }}</a>
                             </td>
-                            <td align="center">￥1599</td>
-                            <td align="center">x1</td>
-                            <td align="center">￥1599</td>
+                            <td align="center">￥{{ item.ProductPrice }}</td>
+                            <td align="center">x{{ item.count }}</td>
+                            <td align="center">￥{{ item.count * item.ProductPrice }}</td>
                         </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
                 <div class="submit-con">
                     <span>订单总价：</span>
-                    <span class="submit-total">￥1599</span>
-                    <span class="btn order-submit" onclick="gotopay()">提交订单</span>
+                    <span class="submit-total">￥{{ total }}</span>
+                    <span class="btn order-submit" onclick="submitOrder()">提交订单</span>
                 </div>
             </div>
         </div>
     </div>
 </div>
-{% endblock %}
-
-{% block script %}
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    使用新地址
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" data-id="">
+                    <div class="form-group">
+                        <label for="name" class="col-sm-3 control-label">收件人姓名</label>
+                        <div class="col-sm-8">
+                            <input name="name" type="text" class="form-control" id="name" placeholder="请输入收件人姓名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="city" class="col-sm-3 control-label">所在城市</label>
+                        <div class="col-sm-6">
+                            <select name="province" onchange="">
+                                <option value="0">请选择</option>
+                                <option value="北京">北京</option>
+                                <option value="湖北">湖北</option>
+                            </select>
+                            <select name="city">
+                                <option value="0">请选择</option>
+                                <option value="武汉">武汉</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address" class="col-sm-3 control-label">详细地址</label>
+                        <div class="col-sm-8">
+                            <input name="address" type="text" class="form-control" id="address" placeholder="请精确到门牌号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="col-sm-3 control-label">收件人手机</label>
+                        <div class="col-sm-8">
+                            <input name="phone" type="text" class="form-control" id="phone" placeholder="请输入11位手机号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="postcode" class="col-sm-3 control-label">邮政编码</label>
+                        <div class="col-sm-8">
+                            <input name="postcode" type="text" class="form-control" id="postcode" placeholder="如：100000">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" data-dismiss="modal" onclick="addAddress()">保存收获地址
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} {% block script %}
 <script>
-    function gotopay(){
-        window.location.href = '/pay';
+    function submitOrder() {
+        var product = $('.product-table tbody').find('tr');
+        var url = '/order/add/index';
+        product.each(function(index, item){
+            var productid = $(item).attr('data-product-id');
+            url = url + '/productid-' + productid + '/' + productid;
+        });
+        var addressid = $('.address-item.active').attr('data-id');
+        if(addressid == undefined){
+            alert('没有选择收货地址！');
+        } else{
+            url = url + '/addressid/' + addressid;
+            window.location.href = url;
+        }
+    }
+
+    function edit(el) {
+        var item = $(el).parents('.address-item');
+        var id = item.attr('data-id');
+        var name = item.find('.name').attr('data-name');
+        var province = item.find('.city').attr('data-province');
+        var city = item.find('.city').attr('data-city');
+        var address = item.find('.address-detail').attr('data-address');
+        var phone = item.find('.address-detail').attr('data-phone');
+        var postcode = item.find('.address-detail').attr('data-post');
+
+        $('#myModalLabel').text('更新地址');
+        var modal = $('#myModal form');
+        modal.attr('data-id', id);
+        modal.find('input[name=name]').val(name);
+        modal.find('select[name=province]').val(province);
+        modal.find('select[name=city]').val(city);
+        modal.find('input[name=address]').val(address);
+        modal.find('input[name=phone]').val(phone);
+        modal.find('input[name=postcode]').val(postcode);
+        $('#myModal .modal-footer button').attr('onclick', 'updateAddress()');
+    }
+
+    function add(el) {
+        $('#myModalLabel').text('使用新地址');
+        var modal = $('#myModal form');
+        modal.attr('data-id', '');
+        modal.find('input[name=name]').val('');
+        modal.find('select[name=province]').val('0');
+        modal.find('select[name=city]').val('0');
+        modal.find('input[name=address]').val('');
+        modal.find('input[name=phone]').val('');
+        modal.find('input[name=postcode]').val('');
+        $('#myModal .modal-footer button').attr('onclick', 'addAddress()');
+    }
+
+    function updateAddress() {
+        var modal = $('#myModal form');
+        var id = modal.attr('data-id');
+        var name = modal.find('input[name=name]').val();
+        var province = modal.find('select[name=province]').val();
+        var city = modal.find('select[name=city]').val();
+        var address = modal.find('input[name=address]').val();
+        var phone = modal.find('input[name=phone]').val();
+        var postcode = modal.find('input[name=postcode]').val();
+
+        $.ajax({
+            url: '/order/confirm/update_address',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                id: id,
+                name: name,
+                province: province,
+                city: city,
+                address: address,
+                phone: phone,
+                postcode: postcode
+            },
+            success: res => {
+                if (!res.errno) {
+                    //更新当前页面地址
+                    var item = $('.address-item[data-id=' + id + ']');
+                    item.find('span.city').attr('data-province', province);
+                    item.find('span.city').attr('data-city', city);
+                    item.find('span.city').text(province + ' ' + city);
+                    item.find('span.name').attr('data-name', name);
+                    item.find('span.name').text('（ ' + name + ' 收 ）');
+                    item.find('.address-detail').attr('data-address', address);
+                    item.find('.address-detail').attr('data-phone', phone);
+                    item.find('.address-detail').attr('data-post', postcode);
+                    item.find('.address-detail').text(' ' + address + ' ' + phone + ' ');
+                } else {
+                    alert('地址更新失败！');
+                }
+            }
+        });
+    }
+
+    function addAddress() {
+        var modal = $('#myModal form');
+        var name = modal.find('input[name=name]').val();
+        var province = modal.find('select[name=province]').val();
+        var city = modal.find('select[name=city]').val();
+        var address = modal.find('input[name=address]').val();
+        var phone = modal.find('input[name=phone]').val();
+        var postcode = modal.find('input[name=postcode]').val();
+
+        $.ajax({
+            url: '/order/confirm/add_address',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                name: name,
+                province: province,
+                city: city,
+                address: address,
+                phone: phone,
+                postcode: postcode
+            },
+            success: function (result) {
+                if (!result.errno) {
+                    $('.address-item.add').before(
+                        '<a class="address-item" data-id="' + result.data +
+                        '" onclick="selectAddress(this)">  \
+                    <div class="address-title"> \
+                        <span class="city" data-province="' +
+                        province + '" data-city="' + city + '">' + province + ' ' + city +
+                        '</span>  \
+                        <span class="name" data-name="' + name +
+                        '">（ ' + name +
+                        ' 收 ）</span> \
+                    </div> \
+                    <div class="address-detail" data-address="' +
+                        address + '" data-phone="' + phone + '" data-post="' + postcode + '"> ' +
+                        address + ' ' + phone +
+                        ' </div> \
+                    <div class="address-opera"> \
+                        <span class="link address-update" data-toggle="modal" data-target="#myModal" onclick="edit(this)">编辑</span> \
+                        <span class="link address-delete" onclick="deleteAddress(this)">删除</span> \
+                    </div> \
+                    </a>'
+                    );
+                } else {
+                    alert('新建地址失败！')
+                }
+            }
+        });
+    }
+
+    function deleteAddress(el) {
+        var item = $(el).parents('.address-item');
+        var id = item.attr('data-id');
+        $.ajax({
+            url: '/order/confirm/delete_address',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                id: id,
+            },
+            success: res => {
+                if (!res.errno) {
+                    //更新当前页面地址
+                    item.remove();
+                } else {
+                    alert('删除失败！');
+                }
+            }
+        });
+    }
+
+    function selectAddress(el) {
+        $(el).addClass('active');
+        $(el).siblings('a').removeClass('active');
     }
 </script>
 {% endblock %}

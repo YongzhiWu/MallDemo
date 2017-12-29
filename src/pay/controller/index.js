@@ -19,6 +19,7 @@ export default class extends Base {
     //生成支付宝二维码
 
     //将二维码数据传递给前端
+    this.assign('CrumbTitle', '订单支付');
     return this.display();
   }
 }

@@ -39,3 +39,10 @@
     </div>
 </div>
 {% endblock %}
+{% block script %}
+<script>
+    $(document).ready(function () {
+        $('.left-con>.menu>li:nth-child(1)').addClass('active');
+    });
+</script>
+{% endblock %}
