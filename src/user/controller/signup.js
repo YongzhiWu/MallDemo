@@ -16,6 +16,7 @@ export default class extends Base {
             let mail = this.post('email');
             let question = this.post('question');
             let answer = this.post('answer');
+
             //生成用户Id，getTime() 方法可返回距 1970 年 1 月 1 日之间的毫秒数
             var d = new Date();
             let userid = d.getTime().toString();
@@ -33,8 +34,21 @@ export default class extends Base {
                 ShopCartId: userid,
                 UserId: userid
             });
-            return this.redirect('./login');
-        }
-        return this.display();
+            return this.redirect('/user/login');
     }
+    return this.display();
+}
+
+//检查用户名是否已经存在
+async isNameAction() {
+    let username = this.post('username');
+    let isName = await this.model('user').where({
+        UserName: username
+    }).find();
+    if (think.isEmpty(isName)) {
+        return this.success();
+    } else {
+        return this.fail(2000, '用户名已经存在！');
+    }
+}
 }

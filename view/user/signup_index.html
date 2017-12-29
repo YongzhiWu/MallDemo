@@ -154,6 +154,25 @@
 
 
         });
+        $("#username").change(function(){
+            var name = $(this).val();
+            $.ajax({
+                url: '/user/signup/is_name',
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    username: name
+                },
+                success: res => {
+                    if(!res.errno){
+                        $(".err-item").attr("style", "display:none");
+                    }else{
+                        $(".err-item").attr("style", "display:block");   
+                        $(".err-msg").text("用户名已经存在！");                         
+                    }
+                }
+            })
+        });
     });
 </script>
 {% endblock %}
