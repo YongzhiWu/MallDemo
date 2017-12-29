@@ -26,6 +26,7 @@ export default class extends Base {
       await this.session('userinfo', newinfo);
       return this.redirect('/user');
     }
+    this.assign('CrumbTitle', '个人中心');
     this.assign('userinfo', userinfo);
     return this.display();
   }

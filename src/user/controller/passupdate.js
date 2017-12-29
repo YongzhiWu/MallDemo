@@ -25,6 +25,7 @@ export default class extends Base {
         return this.redirect('/user/passupdate');
       }
     }
+    this.assign('CrumbTitle', '修改密码');
     return this.display();
   }
 }
