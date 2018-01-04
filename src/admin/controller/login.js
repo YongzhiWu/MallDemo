@@ -15,7 +15,7 @@ export default class extends think.controller.base {
         this.assign('error', true);
         return this.display();
       } else {
-        await this.session('userinfo', {
+        await this.session('admininfo', {
           username: username,
           password: password
         });

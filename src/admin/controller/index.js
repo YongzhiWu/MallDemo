@@ -6,12 +6,11 @@ export default class extends think.controller.base {
    * @return {Promise} []
    */
   async __before(){
-    let userinfo = await this.session('userinfo')
-    console.log(userinfo)
+    let userinfo = await this.session('admininfo')
     if(think.isEmpty(userinfo)){
-      this.assign('isLogin', false)
+      this.assign('isAdminLogin', false)
     }else{
-      this.assign('isLogin', true)
+      this.assign('isAdminLogin', true)
       this.assign('username', userinfo.username)
     }
   }

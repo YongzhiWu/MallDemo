@@ -106,11 +106,19 @@ export default class extends Base {
       let description = this.post('description');
       let price = this.post('price');
       let quantity = this.post('quantity');
+      let imagefile = this.file('image');
+      let filepath = imagefile.path;
+      let array = filepath.split("\\");
+      let basename = array[array.length-1];
+      let uploadpath = think.RESOURCE_PATH + '/static/img/product';
+      fs.renameSync(filepath, uploadpath + '/' + basename);
+      imagefile.path = uploadpath + '/' + basename;
       let updateData = await this.model('productinfo').where({ProductId: id}).update({
         ProductName: name,
         ProductPrice: price,
         ProductOutline: description,
-        ProductStorage: quantity
+        ProductStorage: quantity,
+        ProductPic: '/static/img/product/' + basename
       });
       return this.redirect('/admin/product');
     }

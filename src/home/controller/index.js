@@ -21,7 +21,26 @@ export default class extends Base {
     // console.log(cate_items);
     //查询首页商品数据表
 
-    //将数据传递给前端
+    //查询侧边导航栏
+    let cate = new Array(10);
+    var index;
+    for(var i = 0; i< 10; i++){
+      let cateData = await this.model('cate').where({row: i+1}).select();
+      for(index in cateData){
+        let productTypeData = await this.model('producttypeinfo').where({ProductTypeId: cateData[index].ProductTypeId}).find();
+        cateData[index]['ProductTypeName'] = productTypeData.ProductTypeName;
+      }
+      cate[i] = cateData;
+    }
+    this.assign('CateItems', cate);
+
+    //查询轮播图
+    let carousel = await this.model('carousel').select();
+    for(index in carousel){
+      let productData = await this.model('productinfo').where({ProductId: carousel[index].ProductId}).find();
+      carousel[index]['ProductPic'] = productData.ProductPic;
+    }
+    this.assign('Carousel', carousel);
     return this.display();
   }
 }
